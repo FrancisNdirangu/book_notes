@@ -1,5 +1,5 @@
 --Create a users table for the book notes
-CREATE TABLE book-notes (
+CREATE TABLE book_notes (
     id SERIAL PRIMARY KEY,
     title:CHAR(100),
     notes:CHAR(2000),
