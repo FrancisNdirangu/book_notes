@@ -25,6 +25,10 @@ db.connect();
 const testQuery = await db.query("SELECT * from book_notes");
 console.log(testQuery.rows);
 
+app.get("/", (req, res) => {
+  res.render("index.ejs");
+});
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
