@@ -29,6 +29,12 @@ app.get("/", (req, res) => {
   res.render("index.ejs");
 });
 
+app.post("/user-input", (req, res) => {
+  const movie_name_input = req.body;
+  console.log(movie_name_input);
+  res.redirect("/");
+});
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
