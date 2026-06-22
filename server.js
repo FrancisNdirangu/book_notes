@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/user-input", (req, res) => {
-  const movie_name_input = req.body;
+  const movie_name_input = req.body.movieInput;
   console.log(movie_name_input);
   res.redirect("/");
 });
