@@ -32,6 +32,11 @@ app.get("/", (req, res) => {
 app.post("/user-input", (req, res) => {
   const movie_name_input = req.body.movieInput;
   console.log(movie_name_input);
+  const formattedQuery = encodeURIComponent(movie_name_input).replace(
+    /%20/g,
+    "+",
+  );
+  console.log(formattedQuery);
   res.redirect("/");
 });
 
