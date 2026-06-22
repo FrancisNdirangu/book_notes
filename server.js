@@ -2,9 +2,11 @@ import "dotenv/config";
 import pg from "pg";
 import express from "express";
 import bodyParser from "body-parser";
+import axios from "axios";
 
 const app = express();
 const port = 3000;
+const SEARCH_URL = `https://openlibrary.org/search.json?q=`;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -29,7 +31,7 @@ app.get("/", (req, res) => {
   res.render("index.ejs");
 });
 
-app.post("/user-input", (req, res) => {
+app.post("/user-input", async (req, res) => {
   const movie_name_input = req.body.movieInput;
   console.log(movie_name_input);
   const formattedQuery = encodeURIComponent(movie_name_input).replace(
@@ -37,6 +39,12 @@ app.post("/user-input", (req, res) => {
     "+",
   );
   console.log(formattedQuery);
+  try {
+    const response = await axios.get(SEARCH_URL + movie_name_input);
+    console.log(response["data"]["docs"][0]);
+  } catch (error) {
+    console.error("Failed to conduct the search for the movie name properly");
+  }
   res.redirect("/");
 });
 
