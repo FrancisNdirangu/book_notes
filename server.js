@@ -40,15 +40,15 @@ app.get("/view", (req, res) => {
 });
 
 app.post("/user-input", async (req, res) => {
-  const movie_name_input = req.body.movieInput;
-  console.log(movie_name_input);
-  const formattedQuery = encodeURIComponent(movie_name_input).replace(
+  const book_name_input = req.body.movieInput;
+  console.log(book_name_input);
+  const formattedQuery = encodeURIComponent(book_name_input).replace(
     /%20/g,
     "+",
   );
   console.log(formattedQuery);
   try {
-    const response = await axios.get(SEARCH_URL + movie_name_input);
+    const response = await axios.get(SEARCH_URL + book_name_input);
     console.log(response["data"]["docs"][0]);
   } catch (error) {
     console.error("Failed to conduct the search for the movie name properly");
