@@ -28,6 +28,10 @@ const testQuery = await db.query("SELECT * from book_notes");
 console.log(testQuery.rows);
 
 app.get("/", (req, res) => {
+  res.render("home.ejs");
+});
+
+app.get("/index", (req, res) => {
   res.render("index.ejs");
 });
 
