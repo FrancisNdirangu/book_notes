@@ -35,6 +35,10 @@ app.get("/index", (req, res) => {
   res.render("index.ejs");
 });
 
+app.get("/view", (req, res) => {
+  res.render("view.ejs");
+});
+
 app.post("/user-input", async (req, res) => {
   const movie_name_input = req.body.movieInput;
   console.log(movie_name_input);
