@@ -7,12 +7,15 @@
         <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
+        <div class="container">
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="index">Add Book Notes</a></li>
             <li><a href="view">View Book Notes</a></li>
         </ul>
+
         <form action="/user-input" method="post" class="input-form">
+            <h1>Create Book Notes</h1>
             <label for="movie_name">Movie Name</label>
             <input type="text" id="movie_name" name="bookInput" />
             <label for="movie_rating">Rating (1-10)</label>
@@ -23,6 +26,8 @@
             <input type="text" id="book_notes" name=booknNotes"/>
             <button type="submit">Submit</button>
         </form>
-        <h1>Create Book Notes</h1>
+
+        </div>
+
     </body>
 </html>
