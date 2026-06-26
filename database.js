@@ -14,4 +14,4 @@ db.on("error", (error) => {
   console.error("unable to establish connection to database", error);
 });
 
-export default pool;
+export default db;
