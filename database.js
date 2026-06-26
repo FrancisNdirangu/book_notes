@@ -9,10 +9,8 @@ const db = new pg.Client({
   password: process.env.DB_PASSWORD,
 });
 
-db.connect();
-
-db.on("error", (error) => {
-  console.error("unable to establish connection to database", error);
-});
+db.connect()
+  .then(() => console.log("Connected to the database"))
+  .catch((err) => console.error("Database connection error", err.stack));
 
 export default db;
