@@ -3,6 +3,8 @@ import express from "express";
 
 const router = express.Router();
 
-router.get("/movies", getBookInfo);
+router.get("/", getBookInfo);
+
+router.post("/", getBookInfo);
 
 export default router;
