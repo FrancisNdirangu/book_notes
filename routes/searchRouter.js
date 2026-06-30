@@ -1,4 +1,4 @@
-import { getBookInfo } from "../controllers/bookController";
+import { getBookInfo } from "../controllers/bookController.js";
 import express from "express";
 
 const router = express.Router();

@@ -1,13 +1,13 @@
-import { booksJsonResponse } from "../apihelpers/bookApi";
+import { booksJsonResponse } from "../apihelpers/bookApi.js";
 
 export const getBookInfo = async (req, res) => {
   try {
-    const bookName = req.body.bookInput;
+    const bookName = await req.body?.bookInput;
     console.log(bookName);
     const booksJson = booksJsonResponse(bookName);
     console.log(booksJson);
-    res.render("views/index.ejs");
+    res.render("../views/index.ejs");
   } catch (error) {
-    console.log("Unable to correctly query for the book", error);
+    console.error("Unable to correctly query for the book", error);
   }
 };
