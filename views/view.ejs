@@ -14,11 +14,9 @@
                 <li><a href="view">View Book Notes</a></li>
             </ul>
 
-            <h1 class="page-title">View Page</h1>
             <ul>
                 <% allBookNotes.forEach( (note) => { %>
-                <h2>Title:</h2>
-                <h2><%= note.title %></h2>
+                <h2>Title:<%= note.title %></h2>
                 <h2>Rating:<%=note.rating%></h2>
                 <p>Review:</p>
                 <p><%= note.notes %></p>
