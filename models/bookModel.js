@@ -22,6 +22,16 @@ export class bookModel {
     return result.rows;
   }
 
+  static async editSpecificBook(id, book_notes, rating, date_read) {
+    const query = `UPDATE book_notes
+      SET notes=$2,date_read=$3,rating=$4
+      WHERE id=$1`;
+
+    const result = await db.query(query, [id, book_notes, date_read, rating]);
+
+    return result.rows;
+  }
+
   static async deleteBook(id) {
     const query = `DELETE FROM book_notes WHERE id = $1`;
 
