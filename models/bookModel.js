@@ -3,6 +3,8 @@ import db from "../config/db.js";
 export class bookModel {
   static async viewAllBooks() {
     const bookRecords = await db.query("SELECT * FROM book_notes");
+
+    return bookRecords.rows;
   }
 
   static async addBook(title, notes, date_read) {

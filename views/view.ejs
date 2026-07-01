@@ -16,11 +16,13 @@
 
             <h1 class="page-title">View Page</h1>
             <ul>
-            <% allBookNotes.forEach( (note) => { %>
-            <h2> Title: <h2%= note.title %></h2>
+                <% allBookNotes.forEach( (note) => { %>
+                <h2>Title:</h2>
+                <h2><%= note.title %></h2>
                 <h2>Rating:<%=note.rating%></h2>
-                <p>Review: <p%= note.notes %></p>
-            <% }); %>
+                <p>Review:</p>
+                <p><%= note.notes %></p>
+                <% }); %>
             </ul>
 
             })
