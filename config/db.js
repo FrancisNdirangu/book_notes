@@ -1,7 +1,7 @@
 import "dotenv/config";
 import pg from "pg";
 
-const db = new pg.Client({
+export const db = new pg.Client({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   database: process.env.DB_DATABASE,
@@ -18,3 +18,5 @@ export async function disconnectDatabase() {
   await db.end();
   console.log("Disconnected from PostgreSQL");
 }
+
+export default db;
