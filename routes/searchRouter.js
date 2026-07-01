@@ -5,6 +5,4 @@ const router = express.Router();
 
 router.get("/", getBookInfo);
 
-router.post("/", getBookInfo);
-
 export default router;
