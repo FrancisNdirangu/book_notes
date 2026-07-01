@@ -14,6 +14,14 @@ export class bookModel {
     return result.rows;
   }
 
+  static async viewSpecificBook(id) {
+    const query = `SELECT * FROM book_notes WHERE id = $1`;
+
+    const result = await db.query(query, [id]);
+
+    return result.rows;
+  }
+
   static async deleteBook(id) {
     const query = `DELETE FROM book_notes WHERE id = $1`;
 
