@@ -2,8 +2,8 @@ import { bookModel } from "../models/bookModel.js";
 
 export async function listAllBooks(req, res, next) {
   try {
-    const response = await bookModel.viewAllBooks();
-    const all_records = response.rows;
+    const all_records = await bookModel.viewAllBooks();
+    console.log(all_records);
 
     res.render("../views/view.ejs", { allBookNotes: all_records });
   } catch (error) {
