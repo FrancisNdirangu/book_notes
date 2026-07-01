@@ -13,3 +13,8 @@ export async function connectDatabase() {
   await db.connect();
   console.log("Connected to PotgreSQL");
 }
+
+export async function disconnectDatabase() {
+  await db.end();
+  console.log("Disconnected from PostgreSQL");
+}
