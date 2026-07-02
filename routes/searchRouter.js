@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get("/", listAllBooks);
 
-router.get("/:id/edit", viewSpecificReview);
+router.get("/:id/view", viewSpecificReview);
 
 router.get("/search", getBookInfo);
 router.post("/search", getBookInfo);

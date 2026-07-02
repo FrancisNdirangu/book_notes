@@ -8,6 +8,6 @@ app.set(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.use("/", searchRouter);
-app.use("/:id/edit", searchRouter);
+app.use("/:id/view", searchRouter);
 
 export default app;
