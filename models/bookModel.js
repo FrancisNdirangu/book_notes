@@ -7,11 +7,11 @@ export class bookModel {
     return bookRecords.rows;
   }
 
-  static async addBook(title, notes, date_read) {
-    const query = `INSERT INTO book_notes (title,notes,date_read)
+  static async addBook(title, notes, date_read, rating) {
+    const query = `INSERT INTO book_notes (title,notes,date_read,rating)
       VALUES = ($1,$2,$3)`;
 
-    const result = await db.query(query, [title, notes, date_read]);
+    const result = await db.query(query, [title, notes, date_read, rating]);
 
     return result.rows;
   }
