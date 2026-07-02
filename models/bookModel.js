@@ -21,7 +21,7 @@ export class bookModel {
 
     const result = await db.query(query, [id]);
 
-    return result.rows;
+    return result.rows[0];
   }
 
   static async editSpecificBook(id, book_notes, rating, date_read) {

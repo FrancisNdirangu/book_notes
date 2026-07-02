@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="container">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="index">Add Book Notes</a></li>
+                <li><a href="view">View Book Notes</a></li>
+            </ul>
+            <h1 class="page-title">Book Notes <%= id%></h1>
+        </div>
+        <div class="entryRecord">
+            <h1><%=blog.title%></h1>
+            <h2><%=blog.rating%></h2>
+            <p><%=blog.notes%></p>
+        </div>
+    </body>
+</html>
