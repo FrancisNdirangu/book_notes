@@ -1,5 +1,5 @@
 import { booksJsonResponse } from "../apihelpers/bookApi.js";
-import { addBook } from "../models/bookModel.js";
+import { bookModel } from "../models/bookModel.js";
 
 export const getBookInfo = async (req, res) => {
   try {
@@ -20,9 +20,15 @@ export const addBookNotes = async (req, res, next) => {
     const dateRead = req.body.dateRead;
     const review = req.body.review;
 
-    const added = await addBook(bookTitle, review, dateRead, bookRating);
+    const added = await bookModel.addBook(
+      bookTitle,
+      review,
+      dateRead,
+      bookRating,
+    );
 
     req.redirect("/");
-
+  } catch (error) {
+    console.error("Unable to add the book to the db", error);
   }
-}
+};

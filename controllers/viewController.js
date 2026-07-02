@@ -25,3 +25,11 @@ export async function viewSpecificReview(req, res, next) {
     console.error("Unable to get that review from the database");
   }
 }
+
+export async function addBookPage(req, res, next) {
+  try {
+    res.render("../views/addNotes.ejs");
+  } catch (error) {
+    console.error("unable to render adding books page", error);
+  }
+}
