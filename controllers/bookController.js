@@ -32,3 +32,21 @@ export const addBookNotes = async (req, res, next) => {
     console.error("Unable to add the book to the db", error);
   }
 };
+
+export const editBookNotes = async (req, res, next) => {
+  try {
+    const bookId = req.params.id;
+    const editedNotes = req.body.editedNotes;
+    const newRating = req.body.newRating;
+
+    const edited = await bookModel.editSpecificBook(
+      bookId,
+      editedNotes,
+      newRating,
+    );
+
+    res.redirect("/");
+  } catch (error) {
+    console.error(`Could not edit the book notes. Error:`, error);
+  }
+};
