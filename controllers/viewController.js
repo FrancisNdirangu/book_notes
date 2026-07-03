@@ -33,3 +33,11 @@ export async function addBookPage(req, res, next) {
     console.error("unable to render adding books page", error);
   }
 }
+
+export async function editBookPage(req, res, next) {
+  try {
+    res.render("../views/editing_page.ejs");
+  } catch (error) {
+    console.error("unable to render the editing book page", error);
+  }
+}
