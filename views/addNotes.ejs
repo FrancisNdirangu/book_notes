@@ -8,17 +8,37 @@
     </head>
     <body>
         <div class="container">
-            <div>
+            <div class="navbar">
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="index">Add Book Notes</a></li>
                     <li><a href="view">View Book Notes</a></li>
                 </ul>
             </div>
-            <div>
-                <h1 class="page-title">Add Book Notes</h1>
-                <input type="text" />
-            </div>
+            <form action="/addBookNotes" method="post">
+                <div class="input-section">
+                    <h1 class="page-title">Add Book Notes</h1>
+                    <div class="row-inputs">
+                        <label for="title">Book Title</label>
+                        <input type="text" name="title" />
+
+                        <label for="rating">Rating</label>
+                        <input type="number" name="rating" />
+
+                        <label for="dateRead">Date Read</label>
+                        <input
+                            type="text"
+                            name="dateRead"
+                            placeholder="yyyy-mm-dd"
+                        />
+                    </div>
+                    <div class="review-section">
+                        <label for="review">Review</label>
+                        <textarea type="text" name="review"> </textarea>
+                    </div>
+                    <button type="submit">Submit 2</button>
+                </div>
+            </form>
         </div>
     </body>
 </html>

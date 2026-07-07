@@ -38,3 +38,19 @@ form {
 .page-title {
     margin-left: 100px;
 }
+
+.row-inputs {
+    display: flex;
+    flex-direction: row;
+}
+
+.input-section {
+    padding-left: 100px;
+}
+
+.input-section .review-section textarea {
+    width: 800px;
+    height: 200px;
+    background-color: grey;
+    color: white;
+}

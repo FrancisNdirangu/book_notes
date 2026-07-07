@@ -20,6 +20,8 @@ export const addBookNotes = async (req, res, next) => {
     const dateRead = req.body.dateRead;
     const review = req.body.review;
 
+    console.log(bookTitle);
+
     const added = await bookModel.addBook(
       bookTitle,
       review,
@@ -27,7 +29,7 @@ export const addBookNotes = async (req, res, next) => {
       bookRating,
     );
 
-    req.redirect("/");
+    res.redirect("/");
   } catch (error) {
     console.error("Unable to add the book to the db", error);
   }

@@ -18,6 +18,7 @@ router.get("/", listAllBooks);
 router.get("/:id/view", viewSpecificReview);
 
 router.get("/addBookNotes", addBookPage);
+router.post("/addBookNotes", addBookNotes);
 
 router.get("/:id/edit", editBookPage);
 

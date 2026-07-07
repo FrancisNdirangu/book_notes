@@ -8,11 +8,11 @@ export class bookModel {
   }
 
   static async addBook(title, notes, date_read, rating) {
-    const query = `INSERT INTO book_notes (title,notes,date_read,rating)
-      VALUES = ($1,$2,$3)`;
+    const query = `INSERT INTO book_notes (title,notes,date_read,rating) VALUES ($1,$2,$3,$4)`;
 
     const result = await db.query(query, [title, notes, date_read, rating]);
 
+    console.log(result.rows);
     return result.rows;
   }
 
