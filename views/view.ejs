@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <link rel="stylesheet" href="styles.css" />
-    </head>
-    <body>
-        <div class="container">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="addBookNotes">Add Book Notes</a></li>
-                <li><a href="view">View Book Notes</a></li>
-            </ul>
-
+<%- include('partials/header.ejs') %>
             <ul>
                 <% allBookNotes.forEach( (note) => { %>
                 <h2>Title:<%= note.title %></h2>
