@@ -54,3 +54,10 @@ form {
     background-color: grey;
     color: white;
 }
+
+.page-content {
+    display: block;
+    padding: 20px;
+    margin: 20px;
+    width: 100%;
+}
