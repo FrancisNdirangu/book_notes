@@ -4,9 +4,12 @@
 
                 <% allBookNotes.forEach( (note) => { %>
                 <article class="eachNote">
-                <h2>Title:<%= note.title %></h2>
-                <h2>Rating:<%=note.rating%></h2>
-                <p>Review:</p>
+                <h2 class="title">Title:<%= note.title %></h2>
+                <div class="ratinganddate">
+                <h2 class="rating">Rating:<%=note.rating%></h2>
+                <h2 class="date">Date: yyyy-mm-dd</h2>
+                </div>
+                <h2>Review:</h2>
                 <p><%= note.notes %></p>
                 </article>
                 <% }); %>

@@ -67,3 +67,15 @@ form {
     border: solid blue 5px;
     margin:10px;
 }
+
+.title {
+    display: block;
+    background-color: yellow;
+}
+
+.ratinganddate {
+    display: flex;
+    flex-direction: row;
+    background-color: green;
+    justify-content: space-evenly;
+}
