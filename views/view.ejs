@@ -1,12 +1,17 @@
 <%- include('partials/header.ejs') %>
+<div class="allNote">
             <ul>
+
                 <% allBookNotes.forEach( (note) => { %>
+                <article class="eachNote">
                 <h2>Title:<%= note.title %></h2>
                 <h2>Rating:<%=note.rating%></h2>
                 <p>Review:</p>
                 <p><%= note.notes %></p>
+                </article>
                 <% }); %>
             </ul>
+</div>
         </div>
     </body>
 </html>
