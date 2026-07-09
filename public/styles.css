@@ -84,18 +84,14 @@ form {
     display: flex;
     flex-direction: column;
     background-color: beige;
-    column-gap: 100px;
+    justify-content: center;
 }
 
 .reviewtitle {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
     background-color: pink;
 }
 
 .reviewRecord {
-    display: flex;
-    flex-direction: row;
     background-color: teal;
+    margin-top: -20px;
 }
