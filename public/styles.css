@@ -79,3 +79,23 @@ form {
     background-color: green;
     justify-content: space-evenly;
 }
+
+.reviewsection {
+    display: flex;
+    flex-direction: column;
+    background-color: beige;
+    column-gap: 100px;
+}
+
+.reviewtitle {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    background-color: pink;
+}
+
+.reviewRecord {
+    display: flex;
+    flex-direction: row;
+    background-color: teal;
+}

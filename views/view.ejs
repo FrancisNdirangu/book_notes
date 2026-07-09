@@ -9,8 +9,10 @@
                 <h2 class="rating">Rating:<%=note.rating%></h2>
                 <h2 class="date">Date: yyyy-mm-dd</h2>
                 </div>
-                <h2>Review:</h2>
-                <p><%= note.notes %></p>
+                <div class="reviewsection">
+                <h2 class="reviewtitle">Review:</h2>
+                <p class="reviewRecord"><%= note.notes %></p>
+                </div>
                 </article>
                 <% }); %>
             </ul>
