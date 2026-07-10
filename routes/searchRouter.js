@@ -9,11 +9,12 @@ import {
   addBookPage,
   editBookPage,
 } from "../controllers/viewController.js";
+import { nullOlidRows } from "../middleware/dbCheck.js";
 import express from "express";
 
 const router = express.Router();
 
-router.get("/", listAllBooks);
+router.get("/",nullOlidRows ,listAllBooks);
 
 router.get("/:id/view", viewSpecificReview);
 
