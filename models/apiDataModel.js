@@ -1,6 +1,6 @@
 import db from "../config/db.js";
 
-export class apiDataModel {
+export class apiModel {
 
   static async checkNullOLID() {
     const nullRecords = await db.query("SELECT * from book_notes WHERE olid IS NULL");
