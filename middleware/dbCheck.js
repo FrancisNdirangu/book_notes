@@ -10,6 +10,7 @@ export const nullOlidRows = async (req,res,next) => {
     if (nullRecords) {
       nullRecords.forEach((record) => {
         console.log(record.title);
+        const bookInfoResponse = booksJsonResponse(record.title);
       });
     }
     next() //tells the middleware to move on to the controller
