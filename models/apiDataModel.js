@@ -7,8 +7,8 @@ export class apiModel {
     return nullRecords.rows;
   }
 
-  static async addApiData(apiResponse) {
-    const AddedResponse = await db.query("INSERT INTO book_notes (olid,original_title,publication_year,author) VALUES ($1,$2,$3,$4)",[apiResponse.cover_edition_key,apiResponse.title,apiResponse.first_publish_year,apiResponse.author_name]);
+  static async addApiData(apiResponse,id) {
+    const AddedResponse = await db.query("UPDATE book_notes SET olid=$1,original_title=$2,publication_year=$3,author=$4 WHERE id=$5",[apiResponse.cover_edition_key,apiResponse.title,apiResponse.first_publish_year,apiResponse.author_name,id]);
     return AddedResponse.rows
   }
 }
