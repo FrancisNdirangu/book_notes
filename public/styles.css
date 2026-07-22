@@ -62,10 +62,17 @@ form {
     width: 100%;
 }
 
+.allNote ul {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    list-style:none;
+
+}
+
 .eachNote {
     background-color: grey;
     border: solid blue 5px;
-    margin:10px;
 }
 
 .title {
@@ -95,3 +102,6 @@ form {
     background-color: teal;
     margin-top: -20px;
 }
+
+
+
