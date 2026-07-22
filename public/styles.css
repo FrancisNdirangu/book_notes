@@ -70,6 +70,12 @@ form {
 
 }
 
+.fullCard {
+    display:flex;
+    flex-direction:row;
+    background-color: lightblue;
+}
+
 .eachNote {
     background-color: grey;
     border: solid blue 5px;
