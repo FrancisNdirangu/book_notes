@@ -30,7 +30,7 @@ export const createBookCoverLinks = async (req, res, next) => {
       nullLinks.forEach(async (record) => {
         const current_olid = await record.olid
         const link = cover_base_link + current_olid + "-M.jpg";
-        console.log(link)
+        const addLinksToDB = apiModel.addBookCoverLink(link, record.id)
       })
     }
     next();
