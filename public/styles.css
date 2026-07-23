@@ -109,5 +109,9 @@ form {
     margin-top: -20px;
 }
 
-
-
+.imageSection img {
+    padding:30px;
+    padding-top: 50px;
+    height:300px;
+    width:300px;
+}
