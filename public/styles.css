@@ -28,7 +28,15 @@ label {
     justify-content: center;
     align-items: center;
     align-content: center;
+
     min-height: 100vh;
+}
+
+.navbar {
+    position:fixed;
+    top:400px;
+    left: 0px;
+    padding-left: 180px;
 }
 
 form {
