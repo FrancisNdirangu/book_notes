@@ -17,7 +17,7 @@
                 <h2 class="title">Title:<%= note.title %></h2>
                 <div class="ratinganddate">
                 <h2 class="rating">Rating:<%=note.rating%></h2>
-                <h2 class="date">Date: yyyy-mm-dd</h2>
+                <h2 class="date">Date: <%=Intl.DateTimeFormat('en-US',{dateStyle:'full'}).format(note.date_read)%></h2>
                 </div>
                 <div class="reviewsection">
                 <h2 class="reviewtitle">Review:</h2>
