@@ -79,6 +79,9 @@ form {
 .eachNote {
     background-color: grey;
     border: solid blue 5px;
+    height:400px;
+    width:400px;
+    margin: 10px;
 }
 
 .title {
@@ -114,4 +117,10 @@ form {
     padding-top: 50px;
     height:300px;
     width:300px;
+}
+
+.noteCard {
+   height: 500px;
+   width: 500px;
+   background-color: orange;
 }
