@@ -4,13 +4,16 @@
 <div class="allNote">
             <ul>
 
-               
- <% allBookNotes.forEach( (note) => { %> 
+
+ <% allBookNotes.forEach( (note) => { %>
     <div class="fullCard">
-            <div class="imageSection"><%=note.book_cover_link%></div>
+            <div class="imageSection">
+                <h1><%=note.book_cover_link%></h1>
+                <img src=<%=note.book_cover_link%>>
+            </div>
             <div class="noteCard">
                 <article class="eachNote">
-                
+
                 <!-- <h2> Image Section: <%= note.book_cover_link%></h2>    -->
                 <h2 class="title">Title:<%= note.title %></h2>
                 <div class="ratinganddate">
@@ -22,14 +25,14 @@
                 <p class="reviewRecord"><%= note.notes %></p>
                 </div>
                 </article>
-            </div>    
+            </div>
 
     </div>
 
                 <% }); %>
-                
-               
-                
+
+
+
             </ul>
 </div>
 
