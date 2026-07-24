@@ -29,6 +29,9 @@
                 <form action=<%=note.id+"/view" %>>
                     <button type="submit">view</button>
                 </form>
+                <form method="POST" action="/deleteBookNote">
+                    <button type="submit" name="id" value=<%=note.id%>>Delete</button>
+                </form>
 
                 </article>
             </div>
