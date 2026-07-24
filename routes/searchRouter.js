@@ -2,6 +2,7 @@ import {
   getBookInfo,
   addBookNotes,
   editBookNotes,
+  deleteBookNotes
 } from "../controllers/bookController.js";
 import {
   listAllBooks,
@@ -25,5 +26,7 @@ router.get("/:id/edit", editBookPage);
 
 router.get("/search", getBookInfo);
 router.post("/search", getBookInfo);
+
+router.post("/deleteBookNote", deleteBookNotes);
 
 export default router;
