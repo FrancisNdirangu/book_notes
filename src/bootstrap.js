@@ -70,4 +70,11 @@ export asyc function ensureDatabaseExists() {
   }
 
 
+asyc function ensureMigrationTrackingTable(client) {
+  await client.query(`CREATE TABLE IF NOT EXISTS schema_migrations (
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    migration_name VARCHAR(255) NOT NULL UNIQUE,
+    executed_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP)`); }
+
+
 
