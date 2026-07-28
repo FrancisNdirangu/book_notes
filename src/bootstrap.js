@@ -70,11 +70,18 @@ export asyc function ensureDatabaseExists() {
   }
 
 
-asyc function ensureMigrationTrackingTable(client) {
+async function ensureMigrationTrackingTable(client) {
   await client.query(`CREATE TABLE IF NOT EXISTS schema_migrations (
     id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     migration_name VARCHAR(255) NOT NULL UNIQUE,
     executed_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP)`); }
 
+
+
+async function getAppliedMigrations(client) {
+  const result = await client.query(`SELECT migration_name FROM schema_migrations ORDER BY migration_name`);
+  return new Set(
+    result.rows.map((row) => row.migration_name));
+}
 
 
