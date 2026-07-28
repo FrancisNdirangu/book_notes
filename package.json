@@ -2,10 +2,13 @@
   "name": "book_notes_project",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "new_server.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node new_server.js",
+    "dev": "node --watch new_server.js",
+    "db:setup": "node src/database/setup.js"
   },
   "repository": {
     "type": "git",
@@ -14,7 +17,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
   "bugs": {
     "url": "https://github.com/FrancisNdirangu/book_notes/issues"
   },
@@ -31,3 +33,4 @@
     "pg": "^8.21.0"
   }
 }
+
