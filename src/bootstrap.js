@@ -24,4 +24,50 @@ function validateDatabaseName(databaseName) {
     ;
     
   }
-}
+};
+
+/** 
+  * Check whether the application database exists.
+  * Create it if its missing
+  */
+export asyc function ensureDatabaseExists() {
+  const databaseName = process.env.DB_NAME;
+
+  if(!databaseName) {
+    throw new Error("DB_NAME has not been provided");
+  }
+
+  validateDatabaseName(databaseName);
+
+  const adminClient = createAdminDatabaseClient();
+
+  try{
+    await adminClient.connect();
+    
+    const result = await adminClient.query(`SELECT 1 FROM pg_database WHERE datname=$1`,[databaseName]);
+
+    if (result.rowCount > 0) {
+      console.log(`Database "${databaseName}" already exists.`);
+      return;
+    }
+    try {
+      await adminClient.query(`CREATE DATABASE "${databaseName}"`);
+
+    } catch (error) {
+      /*
+        * Posgresql error 42P04 means duplicate_database.
+        * This might happen if two setup processes check at almost at the same time and both try to create the database
+        */
+        if (error.code === "42P04") {
+          console.log(`Database "${databaseName}" was created by another process.`);
+          return;
+        }
+
+      throw error;
+    }} finally {
+      await adminClient.end().catch(() => {});
+    }
+  }
+
+
+
