@@ -84,4 +84,59 @@ async function getAppliedMigrations(client) {
     result.rows.map((row) => row.migration_name));
 }
 
+/**
+  * Runs every migration that has not already been applied.
+  */
+export async function runMigrations() {
+  const client = createAppDatabaseClient();
+
+  try {
+    await client.connect();
+
+    await ensureMigrationTrackingTable();
+
+    const appliedMigrations = await getAppliedMigrations(client);
+
+    const migrationFiles = (
+      await fs.readdir(migrationsDirectory)
+    ).filter((fileName) => fileName.endsWith(".sql")).sort();
+
+    for (const migrationFile of migrationFiles) {
+      if (appliedMigrations.has(migrationFile)){
+        console.log(`Skipping ${migrationFile}`);
+        continue;
+      }
+
+      const migrationPath = path.join(migrationsDirectory,migrationFile);
+
+      const sql = await fs.readFile(migrationPath,"utf8");
+
+      console.log(`Running ${migrationFile}`);
+
+      try {
+        await client.query("BEGIN");
+
+        await cleint.query(sql);
+
+        await client.query(`
+          INSERT INTO schema_migrations (migration_name)
+          VALUES ($1) `, [migrationFile]);
+
+        await client.query("COMMIT");
+
+        console.log(`Completed ${migrationFile}`);
+
+      } catch (error) {
+        await client.query("ROLLBACK");
+        throw error;
+      }
+    }
+
+    console.log("All database migrations are up to date.");
+
+  } finally {
+  await client.end().catch(() => {});
+}
+
+} 
 
