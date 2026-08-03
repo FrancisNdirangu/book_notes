@@ -30,7 +30,7 @@ function validateDatabaseName(databaseName) {
   * Check whether the application database exists.
   * Create it if its missing
   */
-export asyc function ensureDatabaseExists() {
+export async function ensureDatabaseExists() {
   const databaseName = process.env.DB_NAME;
 
   if(!databaseName) {
