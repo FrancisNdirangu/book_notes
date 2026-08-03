@@ -93,7 +93,7 @@ export async function runMigrations() {
   try {
     await client.connect();
 
-    await ensureMigrationTrackingTable();
+    await ensureMigrationTrackingTable(client);
 
     const appliedMigrations = await getAppliedMigrations(client);
 
