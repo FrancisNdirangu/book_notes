@@ -116,7 +116,7 @@ export async function runMigrations() {
       try {
         await client.query("BEGIN");
 
-        await cleint.query(sql);
+        await client.query(sql);
 
         await client.query(`
           INSERT INTO schema_migrations (migration_name)

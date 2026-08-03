@@ -1,5 +1,5 @@
-import app from "./app.js";
 import "dotenv/config";
+import app from "./app.js";
 import { connectDatabase, disconnectDatabase } from "./config/db.js";
 const port = 3000;
 

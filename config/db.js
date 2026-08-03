@@ -3,19 +3,12 @@ import pg from "pg";
 
 const dbConfig = {
   host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  database: process.env.DB_DATABASE,
-  password: process.env.DB_PASSWORD,
+  user: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
   port: process.env.DB_PORT,
-};
+  database: process.env.POSTGRES_DB };
 
-export const db = new pg.Client({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  database: process.env.DB_DATABASE,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
-});
+export const db = new pg.Client(dbConfig);
 
 export async function connectDatabase() {
   await db.connect();
