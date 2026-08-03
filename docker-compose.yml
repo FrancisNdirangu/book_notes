@@ -22,6 +22,8 @@ services:
       - app-network
     env_file:
       - .env
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
 
 
 networks:
@@ -29,6 +31,7 @@ networks:
 
 volumes:
   db-data:
+  pgadmin-data:
 
 
 
