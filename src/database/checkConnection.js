@@ -1,4 +1,4 @@
-import { createAppDatabaseClient} from "../config/db.js"
+import { createAppDatabaseClient} from "../../config/db.js"
 
 export async function verifyDatabaseConnection() {
   const client = createAppDatabaseClient();

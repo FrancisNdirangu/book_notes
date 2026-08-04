@@ -1,12 +1,14 @@
 import "dotenv/config";
 import app from "./app.js";
 import { connectDatabase, disconnectDatabase } from "./config/db.js";
+import { verifyDatabaseConnection } from "./src/database/checkConnection.js";
 const port = 3000;
 
 let server;
 
 async function startServer() {
   try {
+    await verifyDatabaseConnection();
     await connectDatabase();
 
     server = app.listen(port, () => {
