@@ -1,6 +1,6 @@
 CREATE TABLE book_notes (
     id serial not null primary key,
-    title VARCHAR(100),
+    title VARCHAR(100) UNIQUE,
     notes VARCHAR(2000),
     date_read date,
     olid VARCHAR(100),
