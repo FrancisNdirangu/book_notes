@@ -1,4 +1,4 @@
-CREATE TABLE authors(
-   id UNIQUE SERIAL INTEGER PRIMARY KEY,
+CREATE TABLE authors (
+   id SERIAL PRIMARY KEY,
    author_name VARCHAR(200) UNIQUE
    ); 
