@@ -8,10 +8,10 @@ export const nullOlidRows = async (req,res,next) => {
     //console.log(nullRecords);
 
     if (nullRecords) {
-      nullRecords.forEach(async (record) => {
+      nullRecords.forEach((record) => {
         //console.log(record.title);
-        const bookInfoResponse = await booksJsonResponse(record.title);
-        const addingInfoDB = await apiModel.addApiData(bookInfoResponse,record.id);
+        const bookInfoResponse = booksJsonResponse(record.title);
+        const addingInfoDB = apiModel.addApiData(bookInfoResponse,record.id);
       });
     }
     next() //tells the middleware to move on to the controller
