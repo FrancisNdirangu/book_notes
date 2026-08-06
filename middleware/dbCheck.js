@@ -5,14 +5,14 @@ export const nullOlidRows = async (req,res,next) => {
   try{
 
     const nullRecords = await apiModel.checkNullOLID();
-    //console.log(nullRecords);
+    console.log(nullRecords);
 
     if (nullRecords) {
-      nullRecords.forEach((record) => {
+      for (const record of nullRecords) {
         //console.log(record.title);
-        const bookInfoResponse = booksJsonResponse(record.title);
-        const addingInfoDB = apiModel.addApiData(bookInfoResponse,record.id);
-      });
+        const bookInfoResponse = await booksJsonResponse(record.title);
+        const addingInfoDB = await apiModel.addApiData(bookInfoResponse,record.id);
+      };
     }
     next() //tells the middleware to move on to the controller
 
