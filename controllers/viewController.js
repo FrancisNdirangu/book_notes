@@ -36,7 +36,14 @@ export async function addBookPage(req, res, next) {
 
 export async function editBookPage(req, res, next) {
   try {
-    res.render("../views/editing_page.ejs");
+    const reviewID = req.params.id;
+    //console.log(reviewID);
+    const specificReview = await bookModel.viewSpecificBook(reviewID);
+    console.log(specificReview);
+    res.render("../views/editing_page.ejs",{
+      blog:specificReview,
+      id:reviewID
+    });
   } catch (error) {
     console.error("unable to render the editing book page", error);
   }
