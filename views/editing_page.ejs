@@ -2,7 +2,7 @@
 <div class="editing-field"> 
 
             <h1 class="page-title">Edit Book Notes: <%=blog.title%></h1>
-            <form> 
+            <form action="/edited-data" method="POST"> 
             <label for="title">Title</label>
             <input name="title" type="text" value="<%=blog.title%>"/>
 
@@ -14,6 +14,8 @@
 
             <label for="review">Review</label>
             <textarea name="review" type="text" rows="10" cols="60"><%=blog.notes%> </textarea>
+
+            <button type="submit">Submit</button>
 
 
 
