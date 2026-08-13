@@ -39,7 +39,7 @@ export async function editBookPage(req, res, next) {
     const reviewID = req.params.id;
     //console.log(reviewID);
     const specificReview = await bookModel.viewSpecificBook(reviewID);
-    console.log(specificReview);
+    //console.log(specificReview);
     res.render("../views/editing_page.ejs",{
       blog:specificReview,
       id:reviewID
