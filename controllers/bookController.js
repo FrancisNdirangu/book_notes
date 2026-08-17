@@ -1,5 +1,6 @@
 import { booksJsonResponse } from "../apihelpers/bookApi.js";
 import { bookModel } from "../models/bookModel.js";
+import {checkOLID} from "../services/bookService.js";
 
 export const getBookInfo = async (req, res) => {
   try {
@@ -38,8 +39,11 @@ export const addBookNotes = async (req, res, next) => {
 export const editBookNotes = async (req, res, next) => {
   try {
     const bookId = req.params.id;
+    const editedTitle = req.body.title;
     const editedNotes = req.body.editedNotes;
     const newRating = req.body.newRating;
+
+    const updateOLID = await checkOLID(id,editedTitle)
 
     const edited = await bookModel.editSpecificBook(
       bookId,

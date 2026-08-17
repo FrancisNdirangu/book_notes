@@ -23,6 +23,7 @@ router.get("/addBookNotes", addBookPage);
 router.post("/addBookNotes", addBookNotes);
 
 router.get("/:id/edit", editBookPage);
+router.post("/books/:id/edit",editBookNotes);
 
 router.get("/search", getBookInfo);
 router.post("/search", getBookInfo);
