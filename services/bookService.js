@@ -1,9 +1,8 @@
 import { booksJsonResponse } from "../apihelpers/bookApi.js";
 import { bookModel } from "../models/bookModel.js";
 import {currentTitle, updateBookCover} from "../models/helperModel.js";
-import { booksJsonResponse } from "../apihelpers/bookApi.js";
 
-export function async checkOLID(id,updatedTitle) {
+export async function checkOLID(id,updatedTitle) {
 
   try{
 
