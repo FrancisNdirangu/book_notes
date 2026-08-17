@@ -24,12 +24,12 @@ export class bookModel {
     return result.rows[0];
   }
 
-  static async editSpecificBook(id, book_notes, rating) {
+  static async editSpecificBook(id, book_notes, rating,title) {
     const query = `UPDATE book_notes
-      SET notes=$2,rating=$3
+      SET notes=$2,rating=$3,title=$4
       WHERE id=$1`;
 
-    const result = await db.query(query, [id, book_notes, rating]);
+    const result = await db.query(query, [id, book_notes, rating,title]);
 
     return result.rows;
   }

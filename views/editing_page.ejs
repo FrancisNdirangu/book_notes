@@ -2,7 +2,7 @@
 <div class="editing-field"> 
 
             <h1 class="page-title">Edit Book Notes: <%=blog.title%></h1>
-            <form action="/books/:id/edit" method="POST"> 
+            <form action="/books/<%=blog.id%>/edit" method="POST"> 
             <label for="title">Title</label>
             <input name="title" type="text" value="<%=blog.title%>"/>
 

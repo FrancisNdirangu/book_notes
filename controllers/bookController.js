@@ -43,12 +43,13 @@ export const editBookNotes = async (req, res, next) => {
     const editedNotes = req.body.editedNotes;
     const newRating = req.body.newRating;
 
-    const updateOLID = await checkOLID(id,editedTitle)
+    const updateOLID = await checkOLID(bookId,editedTitle)
 
     const edited = await bookModel.editSpecificBook(
       bookId,
       editedNotes,
       newRating,
+      editedTitle
     );
 
     res.redirect("/");

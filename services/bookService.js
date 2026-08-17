@@ -7,9 +7,10 @@ export async function checkOLID(id,updatedTitle) {
   try{
 
     const title = updatedTitle;
-    const currentTitle = currentTitle(id);
+    console.log(title);
+    const editedTitle = await currentTitle(id);
 
-    if (title.toLowerCase().trim() !== currentTitle.toLowerCase().trim()) {
+    if (title.toLowerCase().trim() !== editedTitle.toLowerCase().trim()) {
       // call the helper api to get the new olid and update the db with the new olid
       const bookJSON = await booksJsonResponse(updatedTitle);
       const newOLID = await bookJSON['cover_edition_key'];
@@ -24,6 +25,6 @@ export async function checkOLID(id,updatedTitle) {
     }
 
   } catch(error) {
-    console.error("Unable to compare the title and updatedTitle",error);
+    console.error("Error in checkOLID function in bookService.js: ",error);
   }
 };
