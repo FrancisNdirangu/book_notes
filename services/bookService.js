@@ -14,7 +14,7 @@ export async function checkOLID(id,updatedTitle) {
       // call the helper api to get the new olid and update the db with the new olid
       const bookJSON = await booksJsonResponse(updatedTitle);
       const newOLID = await bookJSON['cover_edition_key'];
-      const link_base = "https://covers.openlibrary.ord/b/olid/"
+      const link_base = "https://covers.openlibrary.org/b/olid/"
       const endOfLink = "-M.jpg"
 
       const new_cover_link = link_base+newOLID+endOfLink;
