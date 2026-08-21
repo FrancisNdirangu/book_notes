@@ -10,7 +10,7 @@
 
 
 
-    <form class="cancel-delete" method="POST" action="/books/cancel-delete">
+    <form class="cancel-delete">
       <button type='submit' class="cancel-delete"> Cancel </button>
     </form>
 
@@ -63,12 +63,16 @@
     //console.log('Delete Button Pressed')
     const deletePressed = document.querySelectorAll('.deleteButton');
     const confirmBox = document.querySelector('.btn.delete-btn');
+    const cancelPressed = document.querySelector('.cancel-delete');
     deletePressed.forEach((button) => {
       button.addEventListener('click', (event) => {
         event.preventDefault();
 
         confirmBox.classList.toggle('hidden-popup');
         })
+    cancelPressed.addEventListener('click', () => {
+      confirmBox.classList.toggle('hidden-popup');
+      })
       }
     );</script>
 </div>
