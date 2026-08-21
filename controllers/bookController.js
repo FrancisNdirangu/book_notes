@@ -63,8 +63,8 @@ export const deleteBookNotes = async (req, res, next) => {
   try {
     const bookId = req.body.id
     //console.log(bookId);
-    const deleted = await bookModel.deleteBook(bookId);
-    res.redirect("/");
+    //const deleted = await bookModel.deleteBook(bookId);
+    //res.redirect("/");
   } catch (error) {
     console.error('Could not extract the id from the delete button',error);
   }
