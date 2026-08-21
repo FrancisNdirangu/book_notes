@@ -45,7 +45,7 @@
                     <button type="submit">view</button>
                 </form>
                 <form method="POST" action="/deleteBookNote">
-                    <button type="submit" name="id" class="deleteButton" value=<%=note.id%>>Delete</button>
+                    <button type="submit" name="id" class="deleteButton" value="<%=note.id%>" data-title="<%=note.title%>">Delete</button>
                 </form>
 
                 </article>
