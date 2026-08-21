@@ -45,7 +45,7 @@
                     <button type="submit">view</button>
                 </form>
                 <form method="POST" action="/deleteBookNote">
-                    <button type="submit" class="deleteButton" value=<%=note.id%>>Delete</button>
+                    <button type="submit" name="id" class="deleteButton" value=<%=note.id%>>Delete</button>
                 </form>
 
                 </article>
@@ -59,7 +59,18 @@
 
             </ul>
 </div>
+<script>     
+    //console.log('Delete Button Pressed')
+    const deletePressed = document.querySelectorAll('.deleteButton');
+    const confirmBox = document.querySelector('.btn.delete-btn');
+    deletePressed.forEach((button) => {
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
 
+        confirmBox.classList.toggle('hidden-popup');
+        })
+      }
+    );</script>
 </div>
         </div>
     </body>
