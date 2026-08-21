@@ -143,6 +143,9 @@ form {
   border-radius:8px;
   padding: 20px;
   color:white;
-  display:none;
 
+}
+
+.hidden-popup {
+  display:none;
 }
