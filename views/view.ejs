@@ -3,17 +3,8 @@
 <div class="btn delete-btn hidden-popup">
   <h1> Do you want to confirm the delete operation</h1>
   <h1 id="confirm-delete-id"> </h1>
-    <form class="confirm-delete">
-      <button type='submit'>Delete</button>
-      
-    </form>
-
-
-
-    <form class="cancel-delete">
-      <button type='submit' class="cancel-delete"> Cancel </button>
-    </form>
-
+      <button type='button' id="confirm-yes-btn">Delete</button>
+      <button type='button' id="confirm-no-btn"> Cancel </button>
 </div>
 <div class="allNote">
             <ul>
@@ -44,7 +35,7 @@
                 <form action=<%=note.id+"/view" %>>
                     <button type="submit">view</button>
                 </form>
-                <form method="POST" action="/deleteBookNote">
+                <form method="POST" action="/books/<%=note.id%>/delete">
                     <button type="submit" name="id" class="deleteButton" value="<%=note.id%>" data-title="<%=note.title%>">Delete</button>
                 </form>
 
@@ -63,23 +54,42 @@
     //console.log('Delete Button Pressed')
     const deletePressed = document.querySelectorAll('.deleteButton');
     const confirmBox = document.querySelector('.btn.delete-btn');
-    const cancelPressed = document.querySelector('.cancel-delete');
     const deletePostId = document.querySelector('#confirm-delete-id');
+    const confirmYesBtn = document.querySelector('#confirm-yes-btn');
+    const confirmNoBtn = document.querySelector('#confirm-no-btn');
+    let formToSubmit = null;
     deletePressed.forEach((button) => {
       button.addEventListener('click', (event) => {
         event.preventDefault();
-        //deletePostId.type= "text"
         const bookTitle = button.dataset.title;
-        //deletePostId.value = bookTitle;
         deletePostId.textContent = bookTitle;
+        formToSubmit = button.closest('form'); //save the id of the record we pressed delete for
 
         confirmBox.classList.toggle('hidden-popup');
-        })
-    cancelPressed.addEventListener('click', () => {
+
+              })
+      
+      }
+
+    );
+
+  confirmYesBtn.addEventListener('click',() => {
+          if (formToSubmit) {
+            formToSubmit.submit(); //submit form if it is saved
+            confirmBox.classList.toggle('hidden-popup')
+          }
+          })
+
+
+  confirmNoBtn.addEventListener('click', () => {
+      formToSubmit = null;
       confirmBox.classList.toggle('hidden-popup');
       })
-      }
-    );</script>
+    </script>
+</div>
+        </div>
+    </body>
+</html>
 </div>
         </div>
     </body>

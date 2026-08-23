@@ -28,6 +28,6 @@ router.post("/books/:id/edit",editBookNotes);
 router.get("/search", getBookInfo);
 router.post("/search", getBookInfo);
 
-router.post("/deleteBookNote", deleteBookNotes);
+router.post("/books/:id/delete", deleteBookNotes);
 
 export default router;

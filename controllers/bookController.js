@@ -61,7 +61,7 @@ export const editBookNotes = async (req, res, next) => {
 export const deleteBookNotes = async (req, res, next) => {
 
   try {
-    const bookId = req.body.id
+    const bookId = req.params.id
     console.log(bookId);
     console.log('Confirm Delete was pressed')
     //const deleted = await bookModel.deleteBook(bookId);
