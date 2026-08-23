@@ -1,6 +1,7 @@
 import { booksJsonResponse } from "../apihelpers/bookApi.js";
 import { bookModel } from "../models/bookModel.js";
 import {checkOLID} from "../services/bookService.js";
+import {deleteBookService} from "../services/crud_service.js";
 
 export const getBookInfo = async (req, res) => {
   try {
@@ -64,6 +65,7 @@ export const deleteBookNotes = async (req, res, next) => {
     const bookId = req.params.id
     console.log(bookId);
     console.log('Confirm Delete was pressed')
+    const deleted = await deleteBookService(bookId);
     //const deleted = await bookModel.deleteBook(bookId);
     res.redirect("/");
 
