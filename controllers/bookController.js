@@ -64,7 +64,7 @@ export const deleteBookNotes = async (req, res, next) => {
   try {
     const bookId = req.params.id
     console.log(bookId);
-    console.log('Confirm Delete was pressed')
+    console.log(`Book id: ${bookId} was deleted`)
     const deleted = await deleteBookService(bookId);
     //const deleted = await bookModel.deleteBook(bookId);
     res.redirect("/");
