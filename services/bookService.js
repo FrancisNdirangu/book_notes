@@ -1,6 +1,7 @@
 import { booksJsonResponse } from "../apihelpers/bookApi.js";
 import { bookModel } from "../models/bookModel.js";
 import {currentTitle, updateBookCover} from "../models/helperModel.js";
+import { bookSearchResults } from "../apihelpers/bookApi.js";
 
 export async function checkOLID(id,updatedTitle) {
 
@@ -28,3 +29,13 @@ export async function checkOLID(id,updatedTitle) {
     console.error("Error in checkOLID function in bookService.js: ",error);
   }
 };
+
+export async function checkBookResults(title) {
+
+  const numResults = await bookSearchResults(title);
+
+  if (numResults == 0) {
+    console.log('there are no results for that book');
+  }
+
+}
