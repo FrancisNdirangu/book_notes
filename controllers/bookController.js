@@ -2,6 +2,8 @@ import { booksJsonResponse } from "../apihelpers/bookApi.js";
 import { bookModel } from "../models/bookModel.js";
 import {checkOLID} from "../services/bookService.js";
 import {deleteBookService} from "../services/crud_service.js";
+import { checkBookResults } from "../services/bookService.js";
+import { bookSearchResults } from "../apihelpers/bookApi.js";
 
 export const getBookInfo = async (req, res) => {
   try {
@@ -24,12 +26,13 @@ export const addBookNotes = async (req, res, next) => {
 
     console.log(bookTitle);
 
-    const added = await bookModel.addBook(
-      bookTitle,
-      review,
-      dateRead,
-      bookRating,
-    );
+    const searchResults = await bookSearchResults(bookTitle);
+    // const added = await bookModel.addBook(
+    //   bookTitle,
+    //   review,
+    //   dateRead,
+    //   bookRating,
+    // );
 
     res.redirect("/");
   } catch (error) {

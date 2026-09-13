@@ -19,4 +19,5 @@ export const bookSearchResults = async (book_name) => {
   const response = await axios.get(process.env.SEARCH_URL+properly_formatted_book_name);
   const numSearchResults = response.data['numFound'];
   console.log(numSearchResults);
+  return numSearchResults;
 }

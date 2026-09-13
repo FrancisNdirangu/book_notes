@@ -34,6 +34,7 @@ export async function checkBookResults(title) {
 
   const numResults = await bookSearchResults(title);
 
+  console.log("your book results are:",numResults);
   if (numResults == 0) {
     console.log('there are no results for that book');
   }
