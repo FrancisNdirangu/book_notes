@@ -15,3 +15,20 @@ const openLibraryClient = axios.create({
   family:4,
 
 });
+
+const searchBookWithCover = async (title) => {
+
+  try {
+    const response = openLibraryClient.get('/search.json',{
+      params: {
+        q: title.trim(),
+        fields: "title,author_name,cover_edition_key,first_publish_year",
+        lang:"eng",
+        limit:3
+      }
+    });
+
+    const book = response.data.docs[0]; //using the first result only despite the limit giving us the top 3 results in english
+
+  }
+}
