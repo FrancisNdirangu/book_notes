@@ -57,3 +57,22 @@ const searchBookWithCover = async (title) => {
     throw error;
   }
 }
+
+const bookInAPI = async (title) => {
+  try {
+    const response = openLibraryClient.get('/search.json',{
+      params: {
+        q: title.trim(),
+        limit:0
+      }
+    });
+
+    const numResults = response.data.numFound;
+
+
+    return numResults >= 1;
+
+  } catch (error) {
+    console.error(`The book of title: ${title} shows up: zero times`);
+  }
+}
