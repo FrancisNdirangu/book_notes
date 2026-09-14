@@ -73,6 +73,6 @@ const bookInAPI = async (title) => {
     return numResults >= 1;
 
   } catch (error) {
-    console.error(`The book of title: ${title} shows up: zero times`);
+    console.error(`The open library client in the function bookInAPI is unable to fetch data from the api:`,error.message);
   }
 }
