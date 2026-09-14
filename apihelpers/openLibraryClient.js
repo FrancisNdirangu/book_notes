@@ -5,7 +5,7 @@ import "dotenv/config"
 // I will create a client that can be reused
 // This client will have the timeout, header like User_Agent and Accept and family:4 (to force ipv4 prevent connection timeouts)
 
-const openLibraryClient = axios.create({
+export const openLibraryClient = axios.create({
   baseURL: process.env.OPENLIBRARYBASEURL,
   timeout:8000,
   headers: {
@@ -16,7 +16,7 @@ const openLibraryClient = axios.create({
 
 });
 
-const searchBookWithCover = async (title) => {
+export const searchBookWithCover = async (title) => {
 
   try {
     const response = await openLibraryClient.get('/search.json',{
@@ -58,7 +58,7 @@ const searchBookWithCover = async (title) => {
   }
 }
 
-const bookInAPI = async (title) => {
+export const bookInAPI = async (title) => {
   try {
     const response = await openLibraryClient.get('/search.json',{
       params: {
@@ -69,6 +69,7 @@ const bookInAPI = async (title) => {
 
     const numResults = response.data.numFound;
 
+    console.log(`The book: ${title} appears this many times ${numResults}`);
 
     return numResults >= 1;
 
