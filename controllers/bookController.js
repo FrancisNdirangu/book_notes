@@ -4,6 +4,7 @@ import {checkOLID} from "../services/bookService.js";
 import {deleteBookService} from "../services/crud_service.js";
 import { checkBookResults } from "../services/bookService.js";
 import { bookSearchResults } from "../apihelpers/bookApi.js";
+import { bookInAPI,searchBookWithCover } from "../apihelpers/openLibraryClient.js";
 
 export const getBookInfo = async (req, res) => {
   try {
@@ -26,7 +27,12 @@ export const addBookNotes = async (req, res, next) => {
 
     console.log(bookTitle);
 
-    const searchResults = await bookSearchResults(bookTitle);
+    const confirmBookInAPI = await bookInAPI(bookTitle);
+
+    // const searchResults = await bookSearchResults(bookTitle);
+
+    const searchResults = await searchBookWithCover(bookTitle);
+    console.log(`The result about whether the book exists is:`,confirmBookInAPI);
     // const added = await bookModel.addBook(
     //   bookTitle,
     //   review,
