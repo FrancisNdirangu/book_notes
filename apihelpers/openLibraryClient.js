@@ -74,6 +74,6 @@ const bookInAPI = async (title) => {
 
   } catch (error) {
     console.error(`The open library client in the function bookInAPI is unable to fetch data from the api:`,error.message);
-    return false;
+    throw error;
   }
 }
