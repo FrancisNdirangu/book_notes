@@ -19,7 +19,7 @@ const openLibraryClient = axios.create({
 const searchBookWithCover = async (title) => {
 
   try {
-    const response = openLibraryClient.get('/search.json',{
+    const response = await openLibraryClient.get('/search.json',{
       params: {
         q: title.trim(),
         fields: "title,author_name,cover_edition_key,first_publish_year,series_key,series_name,series_position",
@@ -60,7 +60,7 @@ const searchBookWithCover = async (title) => {
 
 const bookInAPI = async (title) => {
   try {
-    const response = openLibraryClient.get('/search.json',{
+    const response = await openLibraryClient.get('/search.json',{
       params: {
         q: title.trim(),
         limit:0
@@ -74,5 +74,6 @@ const bookInAPI = async (title) => {
 
   } catch (error) {
     console.error(`The open library client in the function bookInAPI is unable to fetch data from the api:`,error.message);
+    return false;
   }
 }
