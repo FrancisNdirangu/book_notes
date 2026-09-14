@@ -31,8 +31,16 @@ export const addBookNotes = async (req, res, next) => {
 
     // const searchResults = await bookSearchResults(bookTitle);
 
-    const searchResults = await searchBookWithCover(bookTitle);
+    // const searchResults = await searchBookWithCover(bookTitle);
     console.log(`The result about whether the book exists is:`,confirmBookInAPI);
+    if (confirmBookInAPI) {
+      const added = await bookModel.addBook(
+        bookTitle,
+        review,
+        dateRead,
+        bookRating
+      );
+    }
     // const added = await bookModel.addBook(
     //   bookTitle,
     //   review,
