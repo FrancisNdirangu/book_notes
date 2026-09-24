@@ -9,7 +9,7 @@ export const validateAddBookNotes = (schema) => {
       error.details.forEach( (item) => {
         const errorName = item.path[0];
         if(!fieldErrors[errorName]) {
-          fieldErrors[errorname] = error.message;
+          fieldErrors[errorName] = error.message;
         }
 
         res.status(400).render('../views/addNotes.ejs',{fieldErrors,
