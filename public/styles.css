@@ -149,3 +149,9 @@ form {
 .hidden-popup {
   display:none;
 }
+
+.validation-errors {
+  background-color:orange;
+  border: 5px solid grey;
+  color: black;
+}
