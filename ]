@@ -25,11 +25,11 @@
 
                 <ol>
                   <% Object.entries( fieldErrors ).forEach( ([ value,key ]) => { %>
-                  <% const errorList = Array.isArray(key) ? key : [key] %>
+                  <% const errorList = Array.isArray(errors) ? errors : [errors] %>
                   <% errorList.forEach( error => { %>
                   <li><strong> <%= key %> </strong>: <%= value %> </li>
                   <% }) %>
-                  <% }) %>
+                  <% })> %>
                 </ol>
 
               </div>

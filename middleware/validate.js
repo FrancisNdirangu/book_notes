@@ -3,7 +3,7 @@ import express from"express";
 
 export const validateAddBookNotes = (schema) => {
   return (req,res,next) => {
-    const {error,value} = schema.validate(req.body)
+    const {error,value} = schema.validate(req.body,{abortEarly:false,stripUnknown:true});
 
     if (error) {
       const fieldErrors = {};
