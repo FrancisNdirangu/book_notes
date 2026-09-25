@@ -23,3 +23,21 @@ export const validateAddBookNotes = (schema) => {
     //next() //tells the middleware to move on to the controller
   }
 }
+
+export const validateEditBookNotes = (schema) => {
+  return (req,res) => {
+    const{error,value} = schema.validate(req.body,{abortEarly:false,stripUnknown:true});
+
+    if (error) {
+      const fieldErrors = {};
+      error.details.forEach( (item) => {
+        const errorName = item.path[0];
+        if (!fieldErrors[errorName]) {
+          fieldErrors[errorName] = item.message;
+        }
+      });
+
+      return res.status(400).render('../views/editing_page.ejs',{fieldErrors,formData:req.body});
+    }
+  }
+}
