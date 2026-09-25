@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/FrancisNdirangu/book_notes#readme",
   "dependencies": {
+    "@joi/date": "^3.0.0",
     "axios": "^1.18.0",
     "body-parser": "^2.3.0",
     "cors": "^2.8.6",
