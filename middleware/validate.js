@@ -17,5 +17,6 @@ export const validateAddBookNotes = (schema) => {
         formData:req.body});
       })
     }
+    next() //tells the middleware to move on to the controller
   }
 }
