@@ -17,6 +17,8 @@ export const validateAddBookNotes = (schema) => {
         formData:req.body});
       })
     }
-    next() //tells the middleware to move on to the controller
+    //this next below might not be good since we dont want the controller getting 
+    //no data after we raise the validation error
+    //next() //tells the middleware to move on to the controller
   }
 }
