@@ -24,11 +24,8 @@
                 <h2> The following are errors in the AddBook form entry </h2>
 
                 <ol>
-                  <% Object.entries( fieldErrors ).forEach( ([ value,key ]) => { %>
-                  <% const errorList = Array.isArray(key) ? key : [key] %>
-                  <% errorList.forEach( error => { %>
-                  <li><strong> <%= key %> </strong>: <%= value %> </li>
-                  <% }) %>
+                  <% Object.values( fieldErrors ).forEach( (detail) => { %>
+                  <li><strong> <%= detail %> </strong></li>
                   <% }) %>
                 </ol>
 

@@ -10,7 +10,7 @@ export const validateAddBookNotes = (schema) => {
       error.details.forEach( (item) => {
         const errorName = item.path[0];
         if(!fieldErrors[errorName]) {
-          fieldErrors[errorName] = error.message;
+          fieldErrors[errorName] = item.message;
         }
       });
 
