@@ -37,7 +37,7 @@ export const validateEditBookNotes = (schema) => {
         }
       });
 
-      return res.status(400).render('../views/editing_page.ejs',{fieldErrors,formData:req.body});
+      return res.status(400).render('../views/editing_page.ejs',{fieldErrors,blog:req.body});
     }
   }
 }
