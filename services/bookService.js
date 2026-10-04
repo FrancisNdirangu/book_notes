@@ -20,10 +20,12 @@ export async function checkOLID(id,updatedTitle) {
       // const endOfLink = "-M.jpg"
       const bookJSON = await searchBookWithCover(updatedTitle) ;
       const newOLID = bookJSON['olid'];
+      console.log(newOLID);
 
 
       // const new_cover_link = link_base+newOLID+endOfLink;
       const new_cover_link = bookJSON['book_cover_url'];
+      console.log(new_cover_link);
 
       const update = await updateBookCover(id,newOLID,new_cover_link);
 
