@@ -24,7 +24,7 @@ export const validateAddBookNotes = (schema) => {
 }
 
 export const validateEditBookNotes = (schema) => {
-  return (req,res) => {
+  return (req,res,next) => {
     const{error,value} = schema.validate(req.body,{abortEarly:false,stripUnknown:true});
     // adding the req.params.id to the req.body object so that the path parameter can be passed if we get a validation error
     const blog  = {...req.body,id:req.params.id};
