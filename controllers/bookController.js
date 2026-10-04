@@ -58,8 +58,8 @@ export const editBookNotes = async (req, res, next) => {
   try {
     const bookId = req.params.id;
     const editedTitle = req.body.title;
-    const editedNotes = req.body.editedNotes;
-    const newRating = req.body.newRating;
+    const editedNotes = req.body.notes;
+    const newRating = req.body.rating;
 
     const updateOLID = await checkOLID(bookId,editedTitle)
 

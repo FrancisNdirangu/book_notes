@@ -13,7 +13,8 @@ import {
 import { nullOlidRows,createBookCoverLinks } from "../middleware/dbCheck.js";
 import express from "express";
 import { bookSchema } from "../validators/bookSchema.js";
-import { validateAddBookNotes } from "../middleware/validate.js";
+import { validateAddBookNotes,validateEditBookNotes } from "../middleware/validate.js";
+import {editedBookSchema} from "../validators/editBookSchema.js"
 
 const router = express.Router();
 
@@ -25,7 +26,7 @@ router.get("/addBookNotes", addBookPage);
 router.post("/addBookNotes",validateAddBookNotes(bookSchema), addBookNotes);
 
 router.get("/:id/edit", editBookPage);
-router.post("/books/:id/edit",editBookNotes);
+router.post("/books/:id/edit",validateEditBookNotes(editedBookSchema),editBookNotes);
 
 router.get("/search", getBookInfo);
 router.post("/search", getBookInfo);
