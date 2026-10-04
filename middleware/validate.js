@@ -27,6 +27,8 @@ export const validateAddBookNotes = (schema) => {
 export const validateEditBookNotes = (schema) => {
   return (req,res) => {
     const{error,value} = schema.validate(req.body,{abortEarly:false,stripUnknown:true});
+    // adding the req.params.id to the req.body object so that the path parameter can be passed if we get a validation error
+    const blog  = {...req.body,id:req.params.id};
 
     if (error) {
       const fieldErrors = {};
@@ -37,7 +39,7 @@ export const validateEditBookNotes = (schema) => {
         }
       });
 
-      return res.status(400).render('../views/editing_page.ejs',{fieldErrors,blog:req.body});
+      return res.status(400).render('../views/editing_page.ejs',{fieldErrors,blog});
     }
   }
 }
