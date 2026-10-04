@@ -37,9 +37,11 @@ export const validateEditBookNotes = (schema) => {
         if (!fieldErrors[errorName]) {
           fieldErrors[errorName] = item.message;
         }
+
       });
 
       return res.status(400).render('../views/editing_page.ejs',{fieldErrors,blog});
     }
+    next();
   }
 }
