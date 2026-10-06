@@ -1,0 +1,2 @@
+ALTER TABLE book_notes
+ADD existInAPI BOOLEAN;
