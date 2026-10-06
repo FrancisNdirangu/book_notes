@@ -1,5 +1,6 @@
 import {apiModel} from "../models/apiDataModel.js";
 import {booksJsonResponse} from "../apihelpers/bookApi.js"
+import { bookInAPI } from "../apihelpers/openLibraryClient.js";
 
 export const nullOlidRows = async (req,res,next) => {
   try{
@@ -37,6 +38,24 @@ export const createBookCoverLinks = async (req, res, next) => {
     }
     next();
   } catch (error) {
+    next(error);
+  }
+}
+
+export const bookExistsInAPI = async (req,res,next) => {
+  try {
+    const nullExistRows = await apiModel.nullExistRows();
+
+    for (const record of nullExistRows) {
+      const exists = await bookInAPI(record.title);
+
+      const fillExistColumn = await apiModel.addExistInApi(exists,record.title);
+    }
+
+    //next so that the middleware allows the router to do other things
+    next();
+  } catch (error){
+    console.error("Unable to add value to existInAPI column, error in bookExistsInAPI function:",error.message);
     next(error);
   }
 }
