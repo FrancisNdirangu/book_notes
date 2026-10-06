@@ -20,6 +20,12 @@ export class apiModel {
   static async addBookCoverLink(link,id) {
     const addedLinks = await db.query("UPDATE book_notes SET book_cover_link=$1 WHERE id=$2", [link, id]);
     return addedLinks.rows
-
   }
+
+
+  static async nullExistRows() {
+    const nullRows = await db.query("SELECT * FROM book_notes WHERE existInAPI is NULL");
+    return nullRows.rows
+  }
+
 }
