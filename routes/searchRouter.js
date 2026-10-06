@@ -10,7 +10,7 @@ import {
   addBookPage,
   editBookPage,
 } from "../controllers/viewController.js";
-import { nullOlidRows,createBookCoverLinks } from "../middleware/dbCheck.js";
+import { nullOlidRows,createBookCoverLinks,bookExistsInAPI } from "../middleware/dbCheck.js";
 import express from "express";
 import { bookSchema } from "../validators/bookSchema.js";
 import { validateAddBookNotes,validateEditBookNotes } from "../middleware/validate.js";
@@ -18,7 +18,7 @@ import {editedBookSchema} from "../validators/editBookSchema.js"
 
 const router = express.Router();
 
-router.get("/",nullOlidRows ,createBookCoverLinks,listAllBooks);
+router.get("/",bookExistsInAPI,nullOlidRows ,createBookCoverLinks,listAllBooks);
 
 router.get("/:id/view", viewSpecificReview);
 

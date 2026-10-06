@@ -29,7 +29,7 @@ export class apiModel {
   }
 
   static async addExistInApi(exists,title) {
-    const existsValue = await db.query("UPDATE book_notes SET existsInAPI = $1 WHERE title = $2",[exists,title]);
+    const existsValue = await db.query("UPDATE book_notes SET existInAPI = $1 WHERE title = $2",[exists,title]);
     return existsValue.rows
   }
 
