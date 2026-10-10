@@ -27,21 +27,21 @@ export const addBookNotes = async (req, res, next) => {
 
     console.log(bookTitle);
 
-    const confirmBookInAPI = await bookInAPI(bookTitle);
-
+    // const confirmBookInAPI = await bookInAPI(bookTitle);
+    //
     // const searchResults = await bookSearchResults(bookTitle);
 
     // const searchResults = await searchBookWithCover(bookTitle);
-    console.log(`The result about whether the book exists is:`,confirmBookInAPI);
-    if (confirmBookInAPI) {
+    // console.log(`The result about whether the book exists is:`,confirmBookInAPI);
+    // // if (confirmBookInAPI) {
       const added = await bookModel.addBook(
         bookTitle,
         review,
         dateRead,
         bookRating
       );
-    }
-    // const added = await bookModel.addBook(
+    // }
+    // // const added = await bookModel.addBook(
     //   bookTitle,
     //   review,
     //   dateRead,
