@@ -3,12 +3,12 @@ import db from "../config/db.js";
 export class apiModel {
 
   static async checkNullOLID() {
-    const nullRecords = await db.query("SELECT * from book_notes WHERE olid IS NULL");
+    const nullRecords = await db.query("SELECT * from book_notes WHERE olid IS NULL AND existinapi = $1",[true]);
     return nullRecords.rows;
   }
 
   static async checkNullBookCoverLink() {
-    const nullLinks = await db.query("SELECT * from book_notes WHERE book_cover_link IS NULL");
+    const nullLinks = await db.query("SELECT * from book_notes WHERE book_cover_link IS NULL and existinapi",[true]);
     return nullLinks.rows;
   }
 
