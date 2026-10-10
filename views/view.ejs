@@ -13,7 +13,7 @@
  <% allBookNotes.forEach( (note) => { %>
     <div class="fullCard">
             <div class="imageSection">
-                <img src=<%=note.book_cover_link%>>
+                <img src=<%=note.book_cover_link ? note.book_cover_link : "../notFoundImage/notFoundBookCover.png"%>>
                 <p><%=note.book_cover_link%></p>
             </div>
             <div class="noteCard">
