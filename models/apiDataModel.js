@@ -8,7 +8,7 @@ export class apiModel {
   }
 
   static async checkNullBookCoverLink() {
-    const nullLinks = await db.query("SELECT * from book_notes WHERE book_cover_link IS NULL and existinapi",[true]);
+    const nullLinks = await db.query("SELECT * from book_notes WHERE book_cover_link IS NULL and existinapi = $1",[true]);
     return nullLinks.rows;
   }
 

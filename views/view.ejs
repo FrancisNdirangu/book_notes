@@ -13,8 +13,8 @@
  <% allBookNotes.forEach( (note) => { %>
     <div class="fullCard">
             <div class="imageSection">
-                <img src=<%=note.book_cover_link ? note.book_cover_link : "../notFoundImage/notFoundBookCover.png"%>>
-                <p><%=note.book_cover_link%></p>
+                <img src="<%=note.existinapi ? note.book_cover_link : "notFoundImage/notFoundBookCover.png"%>">
+                <p><%=note.book_cover_link ? note.book_cover_link : "the book cover does not exist in the api"%></p>
             </div>
             <div class="noteCard">
                 <article class="eachNote">
