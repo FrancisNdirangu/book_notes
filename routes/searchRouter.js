@@ -26,7 +26,7 @@ router.get("/:id/view", recordExists,viewSpecificReview);
 router.get("/addBookNotes", addBookPage);
 router.post("/addBookNotes",validateAddBookNotes(bookSchema), addBookNotes);
 
-router.get("/:id/edit", editBookPage);
+router.get("/:id/edit", recordExists,editBookPage);
 router.post("/books/:id/edit",validateEditBookNotes(editedBookSchema),editBookNotes);
 
 router.get("/search", getBookInfo);
