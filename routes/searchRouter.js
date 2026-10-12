@@ -15,12 +15,13 @@ import express from "express";
 import { bookSchema } from "../validators/bookSchema.js";
 import { validateAddBookNotes,validateEditBookNotes } from "../middleware/validate.js";
 import {editedBookSchema} from "../validators/editBookSchema.js"
+import {recordExists} from "../middleware/notFound.js";
 
 const router = express.Router();
 
 router.get("/",bookExistsInAPI,nullOlidRows ,createBookCoverLinks,listAllBooks);
 
-router.get("/:id/view", viewSpecificReview);
+router.get("/:id/view", recordExists,viewSpecificReview);
 
 router.get("/addBookNotes", addBookPage);
 router.post("/addBookNotes",validateAddBookNotes(bookSchema), addBookNotes);

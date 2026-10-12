@@ -34,7 +34,8 @@ export class apiModel {
   }
 
   static async maxIdValue() {
-    const maxId = db.query('SELECT MAX(id) AS max from book_notes');
+    const maxId = await db.query('SELECT MAX(id) AS max from book_notes');
+    console.log(maxId);
     return maxId.rows[0].max
   }
 
