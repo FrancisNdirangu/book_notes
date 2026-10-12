@@ -33,4 +33,10 @@ export class apiModel {
     return existsValue.rows
   }
 
+  static async maxIdValue() {
+    const maxId = db.query('SELECT MAX(id) AS max from book_notes');
+    return maxId.rows[0].max
+  }
+
+
 }
