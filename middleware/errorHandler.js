@@ -13,7 +13,7 @@ export const centralErrorHandler = (err,req,res,next) => {
                   message:errorDescription,
                   stack:errorStack});
 
-  res.status(errorCode).json({
+  return res.status(errorCode).json({
       success:false,
       error:{ code:errorCode,
         description:errorDescription,
