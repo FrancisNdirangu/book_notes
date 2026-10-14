@@ -8,6 +8,7 @@ export async function listAllBooks(req, res, next) {
     res.render("../views/view.ejs", { allBookNotes: all_records });
   } catch (error) {
     console.error("Unable to display the all the records", error);
+    next(error);
   }
 }
 
@@ -23,6 +24,7 @@ export async function viewSpecificReview(req, res, next) {
     });
   } catch (error) {
     console.error("Unable to get that review from the database");
+    next(error);
   }
 }
 
@@ -31,6 +33,7 @@ export async function addBookPage(req, res, next) {
     res.render("../views/addNotes.ejs");
   } catch (error) {
     console.error("unable to render adding books page", error);
+    next(error);
   }
 }
 
@@ -46,5 +49,6 @@ export async function editBookPage(req, res, next) {
     });
   } catch (error) {
     console.error("unable to render the editing book page", error);
+    next(error);
   }
 }
