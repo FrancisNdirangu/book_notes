@@ -34,6 +34,7 @@ export async function checkOLID(id,updatedTitle) {
 
   } catch(error) {
     console.error("Error in checkOLID function in bookService.js: ",error);
+    next(error);
   }
 };
 
