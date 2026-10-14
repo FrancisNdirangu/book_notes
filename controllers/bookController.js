@@ -6,7 +6,7 @@ import { checkBookResults } from "../services/bookService.js";
 import { bookSearchResults } from "../apihelpers/bookApi.js";
 import { bookInAPI,searchBookWithCover } from "../apihelpers/openLibraryClient.js";
 
-export const getBookInfo = async (req, res) => {
+export const getBookInfo = async (req, res,next) => {
   try {
     const bookName = await req.body?.bookInput;
     console.log(bookName);
@@ -15,6 +15,7 @@ export const getBookInfo = async (req, res) => {
     res.render("../views/index.ejs");
   } catch (error) {
     console.error("Unable to correctly query for the book", error);
+    next(error);
   }
 };
 
