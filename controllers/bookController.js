@@ -74,6 +74,7 @@ export const editBookNotes = async (req, res, next) => {
     res.redirect("/");
   } catch (error) {
     console.error(`Could not edit the book notes. Error:`, error);
+    next(error);
   }
 };
 
@@ -89,5 +90,6 @@ export const deleteBookNotes = async (req, res, next) => {
 
   } catch (error) {
     console.error('Could not extract the id from the delete button',error);
+    next(error);
   }
 }
