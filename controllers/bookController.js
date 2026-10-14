@@ -51,6 +51,7 @@ export const addBookNotes = async (req, res, next) => {
     res.redirect("/");
   } catch (error) {
     console.error("Unable to add the book to the db", error);
+    next(error);
 
 }};
 
