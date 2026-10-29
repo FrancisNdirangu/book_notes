@@ -10,6 +10,7 @@ li a {
     display: block;
     color: black;
     padding: 8px 16px;
+    /* justify-content: center; */
     text-decoration: none;
 }
 
@@ -36,6 +37,7 @@ label {
     top: 5rem;
     list-style-type: none;
     border-right: 1px solid #333;
+    justify-content: center;
 }
 
 .navbar-div {
