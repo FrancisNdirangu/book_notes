@@ -116,8 +116,10 @@ label {
 .ratinganddate {
     display: flex;
     flex-direction: row;
-    background-color: green;
-    justify-content: space-evenly;
+    /* background-color: green; */
+    /* justify-content: space-evenly; */
+    gap:1rem;
+    margin:1rem;
 }
 
 .reviewsection {
