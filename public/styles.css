@@ -45,9 +45,9 @@ label {
     
 }
 
-form {
+/* form {
     margin-left: 100px;
-}
+} */
 
 .page-title {
     margin-left: 100px;
@@ -139,14 +139,21 @@ form {
    background-color: orange;
 }
 
+.buttons {
+    display: flex;
+    flex-direction: row;
+    /* background-color: red; */
+    justify-content: space-around;
+}
+
 .delete-btn {
   position:fixed;
   background-color: blue;
   width: 33%;
   z-index: 1000;
   top:50%;
-  left:50%;
-  border-radius:8px;
+  left:50%; 
+  border-radius:8px; 
   padding: 20px;
   color:white;
 
