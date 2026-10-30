@@ -88,16 +88,26 @@ label {
     display:flex;
     flex-direction:row;
     background-color: lightblue;
+
 }
 
 .eachNote {
     background-color: grey;
     border: solid blue 5px;
-    height:400px;
-    width:400px;
-    margin: 10px;
+    /* height:400px;
+    width:400px; */
+    margin: 1rem;
 }
 
+.noteCard {
+   height: 30rem;
+   width: 30rem;
+   background-color: orange;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   
+}
 .title {
     display: block;
     background-color: yellow;
@@ -114,7 +124,7 @@ label {
     display: flex;
     flex-direction: column;
     background-color: beige;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .reviewtitle {
@@ -123,7 +133,7 @@ label {
 
 .reviewRecord {
     background-color: teal;
-    margin-top: -20px;
+    /* margin-top: -20px; */
 }
 
 .imageSection img {
@@ -133,17 +143,14 @@ label {
     width:300px;
 }
 
-.noteCard {
-   height: 500px;
-   width: 500px;
-   background-color: orange;
-}
+
 
 .buttons {
     display: flex;
     flex-direction: row;
-    /* background-color: red; */
+    background-color: red;
     justify-content: space-around;
+    top:2rem;
 }
 
 .delete-btn {
