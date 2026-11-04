@@ -26,7 +26,7 @@ label {
 .container {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: 0.1fr 1fr 0.1fr;
+    grid-template-rows: 5rem 1fr 5rem;
     outline: 3px red solid;
 
     
@@ -64,6 +64,7 @@ label {
     grid-column: 2/3;
     /* background-color: cyan; */
     justify-self: center;
+    min-height: 100vh;
 
 }
 
