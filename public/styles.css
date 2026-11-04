@@ -51,13 +51,21 @@ label {
 .navbar-div {
      grid-column: 1/2;
      grid-row:2/3;
-     background-color: yellow;
+     /* background-color: yellow; */
     
 }
 
 /* form {
     margin-left: 100px;
 } */
+
+.editing-field {
+    grid-row: 2/3;
+    grid-column: 2/3;
+    /* background-color: cyan; */
+    justify-self: center;
+
+}
 
 .page-title {
     margin-left: 100px;
