@@ -169,8 +169,9 @@ label {
 }
 
 .imageSection img {
-    height:17rem;
-    width:17rem;
+    display: none;
+    /* height:17rem;
+    width:17rem; */
  
 }
 
@@ -208,7 +209,7 @@ label {
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 400px) {
     .container {
         display: grid;
         grid-template-columns: 1fr;
@@ -232,6 +233,37 @@ label {
     .pageContent {
         grid-row: 2/3;
         grid-column: 1/-1;
+    }
+
+    /* .allNote {
+        grid-row: 2/3;
+    } */
+
+    .allNote ul {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+    }
+    .fullCard {
+        max-width: 20rem;
+    }
+
+    .imageSection p {
+        display: none;
+    }
+    .noteCard {
+        /* height: 15rem;
+        width: 20rem; */
+    }
+
+    .imageSection img {
+        height: 4rem;
+        width: 4rem;
+    }
+
+    .date {
+        display: none;
     }
 
 
