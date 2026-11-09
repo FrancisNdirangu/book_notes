@@ -114,23 +114,26 @@ label {
 
 }
 
-.eachNote {
-    background-color: grey;
-    border: solid blue 5px;
-    /* height:400px;
-    width:400px; */
-    margin: 1rem;
-}
-
 .noteCard {
    height: 30rem;
    width: 30rem;
+   padding: 5px;
    background-color: orange;
    display: flex;
    flex-direction: column;
    justify-content: center;
    
 }
+
+.eachNote {
+    background-color: grey;
+    border: solid blue 2px;
+    /* height:400px;
+    width:400px; */
+    /* margin: 1rem; */
+}
+
+
 .title {
     display: block;
     background-color: yellow;
@@ -231,6 +234,7 @@ label {
     }
 
     .pageContent {
+        margin-top: 1rem;
         grid-row: 2/3;
         grid-column: 1/-1;
     }
@@ -243,16 +247,19 @@ label {
         display: flex;
         flex-direction: column;
         gap: 20px;
+        /* padding:2px; */
 
     }
     .fullCard {
         max-width: 20rem;
+        /* padding: 2px; */
     }
 
     .imageSection p {
         display: none;
     }
     .noteCard {
+        padding: 5px;
         /* height: 15rem;
         width: 20rem; */
     }
@@ -262,9 +269,13 @@ label {
         width: 4rem;
     }
 
-    .date {
-        display: none;
+    .ratinganddate {
+        display: flex;
+        flex-direction: column;
     }
+    /* .date {
+        display: none;
+    } */
 
 
 
