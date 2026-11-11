@@ -172,9 +172,9 @@ label {
 }
 
 .imageSection img {
-    display: none;
-    /* height:17rem;
-    width:17rem; */
+    /* display: none; */
+    height:17rem;
+    width:17rem;
  
 }
 
@@ -239,18 +239,16 @@ label {
         grid-column: 1/-1;
     }
 
-    /* .allNote {
-        grid-row: 2/3;
-    } */
-
     .allNote ul {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 2rem;
         /* padding:2px; */
 
     }
     .fullCard {
+        /* display: flex;
+        flex-direction: column; */
         max-width: 20rem;
         /* padding: 2px; */
     }
@@ -259,12 +257,14 @@ label {
         display: none;
     }
     .noteCard {
+
         padding: 5px;
         /* height: 15rem;
         width: 20rem; */
     }
 
     .imageSection img {
+        display: none;
         height: 4rem;
         width: 4rem;
     }
@@ -278,6 +278,23 @@ label {
     } */
 
 
+    .input-section {
+    padding-left: 1rem;
+}
+
+    .input-section .review-section textarea {
+        width: 21rem;
+        height: 15rem;
+        background-color: grey;
+        color: white;
+    }
+
+    .input-section input {
+        width: 21rem;}
+    
+    .row-inputs {
+    display: flex;
+    flex-direction: column;}
 
 
 
