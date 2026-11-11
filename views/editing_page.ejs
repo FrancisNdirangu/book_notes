@@ -1,17 +1,11 @@
 <%- include('partials/header.ejs') %>
 <%- include('partials/navbar.ejs') %>
 <% if (locals.fieldErrors && Object.keys(fieldErrors).length > 0) { %>
-<!-- <div class="validation-errors"> 
-<h2>The following are errors in the AddBook form entry </h2>
-<ol> 
-<% Object.values( fieldErrors ).forEach( (detail) => { %> 
 
-<li> <%= detail %> </li>
-<% }) %>
-</ol>
-</div> -->
 <%- include('partials/validationPartial.ejs',{fieldErrors}) %>
 <% } %>
+
+<main>
 <div class="editing-field"> 
 
             <h1 class="page-title">Edit Book Notes: <%=blog.title%></h1>
@@ -35,6 +29,7 @@
 
             </form>
 </div>
+</main>
         </div>
     </body>
 </html>
