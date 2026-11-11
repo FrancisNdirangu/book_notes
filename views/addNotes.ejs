@@ -5,17 +5,8 @@
 
               <% if (locals.fieldErrors && Object.keys(fieldErrors).length > 0) { %>
 
-              <div class="validation-errors">
+                <%- include('partials/validationPartial.ejs', {fieldErrors}) %>
 
-                <h2> The following are errors in the AddBook form entry </h2>
-
-                <ol>
-                  <% Object.values( fieldErrors ).forEach( (detail) => { %>
-                  <li><strong> <%= detail %> </strong></li>
-                  <% }) %>
-                </ol>
-
-              </div>
               <% } %>
 
 
