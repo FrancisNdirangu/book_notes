@@ -254,14 +254,15 @@ label {
         grid-row: 2/3;
         grid-column: 1/-1;
         margin-top: 1rem;
-        
+
     }
 
     .allNote ul {
         display: flex;
         flex-direction: column;
         gap: 2rem;
-        max-width: 20rem;
+        width: 85%;
+        max-width: 350px;
         /* padding:2px; */
 
     }
@@ -303,14 +304,17 @@ label {
 }
 
     .input-section .review-section textarea {
-        width: 21rem;
+        width: 95%;
+        max-width: 350px;
         height: 15rem;
         background-color: grey;
         color: white;
     }
 
     .input-section input {
-        width: 21rem;}
+        width: 95%;
+        max-width:350%;
+    }
     
     .row-inputs {
     display: flex;
