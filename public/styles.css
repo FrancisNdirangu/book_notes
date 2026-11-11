@@ -78,12 +78,18 @@ label {
 }
 
 .input-section {
-    padding-left: 100px;
+    padding-left: 8rem;
+}
+
+.row-inputs{
+    gap:1rem;
+    margin-bottom: 1rem;
+    /* margin: 1rem; */
 }
 
 .input-section .review-section textarea {
-    width: 800px;
-    height: 200px;
+    width: 50rem;
+    height: 20rem;
     background-color: grey;
     color: white;
 }
@@ -232,6 +238,11 @@ label {
         justify-content: flex-start;
 
     }
+
+    /* .navbar li a:hover {
+    background-color: #555555;
+    color: white;
+    } */
 
     .pageContent {
         margin-top: 1rem;
