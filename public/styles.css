@@ -320,6 +320,21 @@ label {
     display: flex;
     flex-direction: column;}
 
+    .editing-field {
+        margin-top: 1rem;
+        grid-row:2/3;
+        grid-column: 1/-1;
+        max-width: 350px;
+        width: 90%;
+    }
+
+    .editing-field textarea {
+        max-width: 400px;
+        width: 95%;
+    }
+
+
+
 
 
 
