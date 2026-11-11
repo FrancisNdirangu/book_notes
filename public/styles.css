@@ -270,6 +270,7 @@ label {
     .noteCard {
 
         padding: 5px;
+        max-width: 12rem;
         /* height: 15rem;
         width: 20rem; */
     }

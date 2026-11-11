@@ -8,6 +8,8 @@
       <button type='button' id="confirm-yes-btn">Delete</button>
       <button type='button' id="confirm-no-btn"> Cancel </button>
 </div>
+
+
 <div class="allNote">
             <ul>
 
@@ -23,6 +25,11 @@
 
 
             </ul>
+    <!-- In the case where the library is empty meaning the allBookNotes variable is null -->
+    <% if (allBookNotes.length === 0) { %>
+        <h3>There are no books in the library</h3>
+        <% } %>
+
 </div>
 <script>     
     //console.log('Delete Button Pressed')
