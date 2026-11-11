@@ -250,17 +250,25 @@ label {
         grid-column: 1/-1;
     }
 
+    .page-content {
+        grid-row: 2/3;
+        grid-column: 1/-1;
+        margin-top: 1rem;
+        
+    }
+
     .allNote ul {
         display: flex;
         flex-direction: column;
         gap: 2rem;
+        max-width: 20rem;
         /* padding:2px; */
 
     }
     .fullCard {
         /* display: flex;
         flex-direction: column; */
-        max-width: 20rem;
+        /* max-width: 20rem; */
         /* padding: 2px; */
     }
 
@@ -270,7 +278,7 @@ label {
     .noteCard {
 
         padding: 5px;
-        max-width: 12rem;
+        /* max-width: 12rem; */
         /* height: 15rem;
         width: 20rem; */
     }
