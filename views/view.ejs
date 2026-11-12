@@ -1,4 +1,6 @@
 <%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs') %>
+
 <div class="pageContent">
 <div class="btn delete-btn hidden-popup">
   <h1> Do you want to confirm the delete operation</h1>
@@ -6,50 +8,31 @@
       <button type='button' id="confirm-yes-btn">Delete</button>
       <button type='button' id="confirm-no-btn"> Cancel </button>
 </div>
+
+<main>
 <div class="allNote">
             <ul>
 
 
  <% allBookNotes.forEach( (note) => { %>
-    <div class="fullCard">
-            <div class="imageSection">
-                <img src="<%=note.existinapi ? note.book_cover_link : "notFoundImage/notFoundBookCover.png"%>">
-                <p><%=note.book_cover_link ? note.book_cover_link : "the book cover does not exist in the api"%></p>
-            </div>
-            <div class="noteCard">
-                <article class="eachNote">
-
-                <!-- <h2> Image Section: <%= note.book_cover_link%></h2>    -->
-                <h2 class="title">Title:<%= note.title %></h2>
-                <div class="ratinganddate">
-                <h2 class="rating">Rating:<%=note.rating%></h2>
-                <h2 class="date">Date: <%=Intl.DateTimeFormat('en-US',{dateStyle:'full'}).format(note.date_read)%></h2>
-                </div>
-                <div class="reviewsection">
-                <h2 class="reviewtitle">Review:</h2>
-                <p class="reviewRecord"><%= note.notes %></p>
-                </div>
-                <form action=<%=note.id+"/edit" %>>
-                    <button type="submit">edit</button>
-                </form>
-                <form action=<%=note.id+"/view" %>>
-                    <button type="submit">view</button>
-                </form>
-                <form method="POST" action="/books/<%=note.id%>/delete">
-                    <button type="submit" name="id" class="deleteButton" value="<%=note.id%>" data-title="<%=note.title%>">Delete</button>
-                </form>
-
-                </article>
-            </div>
-
-    </div>
-
+    <!-- <div class="fullCard"> -->
+        <li class="fullCard">
+            <%- include('partials/bookCard.ejs', {note}) %>
+     </li>
+    <!-- </div> -->
                 <% }); %>
 
 
 
             </ul>
+    <!-- In the case where the library is empty meaning the allBookNotes variable is null -->
+    <% if (allBookNotes.length === 0) { %>
+        <h3>There are no books in the library</h3>
+        <% } %>
+
 </div>
+
+</main>
 <script>     
     //console.log('Delete Button Pressed')
     const deletePressed = document.querySelectorAll('.deleteButton');
@@ -87,10 +70,6 @@
       })
     </script>
 </div>
-        </div>
-    </body>
-</html>
 </div>
-        </div>
     </body>
 </html>

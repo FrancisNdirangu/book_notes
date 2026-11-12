@@ -1,0 +1,11 @@
+              <div class="validation-errors">
+
+                <h2> The following are errors in the AddBook form entry </h2>
+
+                <ol>
+                  <% Object.values( fieldErrors ).forEach( (detail) => { %>
+                  <li><strong> <%= detail %> </strong></li>
+                  <% }) %>
+                </ol>
+
+              </div>

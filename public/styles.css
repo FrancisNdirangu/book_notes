@@ -1,15 +1,8 @@
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 350px;
-    border-right: 1px solid #333;
-}
-
 li a {
     display: block;
     color: black;
     padding: 8px 16px;
+    /* justify-content: center; */
     text-decoration: none;
 }
 
@@ -23,24 +16,56 @@ label {
 }
 
 .container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 5rem 1fr 5rem;
+    outline: 3px red solid;
 
+    
+}
+
+.pageContent {
+    grid-row:2/3;
+    grid-column: 2/3;
     min-height: 100vh;
 }
 
 .navbar {
-    position:fixed;
-    top:400px;
-    left: 0px;
-    padding-left: 180px;
+    /* background-color: green; */
+    position:sticky;
+   
+    top: 5rem;
+    list-style-type: none;
+    border-right: 1px solid #333;
+    justify-content: center;
 }
 
-form {
+.navbar-div {
+     grid-column: 1/2;
+     grid-row:2/3;
+     /* background-color: yellow; */
+    
+}
+
+/* form {
     margin-left: 100px;
+} */
+
+.editing-field {
+    grid-row: 2/3;
+    grid-column: 2/3;
+    /* background-color: cyan; */
+    justify-self: center;
+    min-height: 100vh;
+
+}
+
+.editing-field textarea {
+    max-width: 70rem;
+    width: 80%;
+    background-color: grey;
+    color:white;
+
 }
 
 .page-title {
@@ -53,21 +78,31 @@ form {
 }
 
 .input-section {
-    padding-left: 100px;
+    padding-left: 8rem;
+}
+
+.row-inputs{
+    gap:1rem;
+    margin-bottom: 1rem;
+    /* margin: 1rem; */
 }
 
 .input-section .review-section textarea {
-    width: 800px;
-    height: 200px;
+    width: 80%;
+    min-height: 20rem;
     background-color: grey;
     color: white;
 }
 
 .page-content {
-    display: block;
+    grid-row: 2/3;
+    grid-column: 2/3;
+    justify-self: center;
+
+    /* display: grid;
     padding: 20px;
     margin: 20px;
-    width: 100%;
+    width: 100%; */
 }
 
 .allNote ul {
@@ -82,15 +117,28 @@ form {
     display:flex;
     flex-direction:row;
     background-color: lightblue;
+
+}
+
+.noteCard {
+   /* height: 30rem; */
+   width: 50%;
+   padding: 5px;
+   background-color: orange;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   
 }
 
 .eachNote {
     background-color: grey;
-    border: solid blue 5px;
-    height:400px;
-    width:400px;
-    margin: 10px;
+    border: solid blue 2px;
+    /* height:400px;
+    width:400px; */
+    /* margin: 1rem; */
 }
+
 
 .title {
     display: block;
@@ -100,15 +148,17 @@ form {
 .ratinganddate {
     display: flex;
     flex-direction: row;
-    background-color: green;
-    justify-content: space-evenly;
+    /* background-color: green; */
+    /* justify-content: space-evenly; */
+    gap:1rem;
+    margin:1rem;
 }
 
 .reviewsection {
     display: flex;
     flex-direction: column;
     background-color: beige;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .reviewtitle {
@@ -117,20 +167,32 @@ form {
 
 .reviewRecord {
     background-color: teal;
-    margin-top: -20px;
+    /* margin-top: -20px; */
+}
+
+.imageSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 35%;
 }
 
 .imageSection img {
-    padding:30px;
-    padding-top: 50px;
-    height:300px;
-    width:300px;
+    /* display: none; */
+    height:65%;
+    width:55%;
+ 
 }
 
-.noteCard {
-   height: 500px;
-   width: 500px;
-   background-color: orange;
+
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    background-color: red;
+    justify-content: space-around;
+    top:2rem;
 }
 
 .delete-btn {
@@ -139,8 +201,8 @@ form {
   width: 33%;
   z-index: 1000;
   top:50%;
-  left:50%;
-  border-radius:8px;
+  left:50%; 
+  border-radius:8px; 
   padding: 20px;
   color:white;
 
@@ -154,4 +216,114 @@ form {
   background-color:orange;
   border: 5px solid grey;
   color: black;
+}
+
+
+@media (max-width: 400px) {
+    .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 3rem 1fr;
+    }
+    .navbar-div {
+        grid-row: 1/2;
+        grid-column: 1/-1;
+        background-color: yellowgreen;
+
+    }
+
+    .navbar {
+        display: flex;
+        flex-direction: row;
+        background-color: blanchedalmond;
+        justify-content: flex-start;
+
+    }
+
+    .pageContent {
+        margin-top: 1rem;
+        grid-row: 2/3;
+        grid-column: 1/-1;
+    }
+
+    .page-content {
+        grid-row: 2/3;
+        grid-column: 1/-1;
+        margin-top: 1rem;
+
+    }
+
+    .allNote ul {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        width: 85%;
+        max-width: 350px;
+        /* padding:2px; */
+
+    }
+
+    .imageSection p {
+        display: none;
+    }
+    .noteCard {
+        padding: 5px;
+        max-width:375px;
+        width:95%
+        /* max-width: 12rem; */
+        /* height: 15rem;
+        width: 20rem; */
+    }
+
+    .imageSection img {
+        display: none;
+        height: 4rem;
+        width: 4rem;
+    }
+
+    .ratinganddate {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .input-section {
+    padding-left: 1rem;
+}
+
+    .input-section .review-section textarea {
+        width: 95%;
+        max-width: 350px;
+        height: 15rem;
+        background-color: grey;
+        color: white;
+    }
+
+    .input-section input {
+        width: 95%;
+        max-width:350px;
+    }
+    
+    .row-inputs {
+    display: flex;
+    flex-direction: column;}
+
+    .editing-field {
+        margin-top: 1rem;
+        grid-row:2/3;
+        grid-column: 1/-1;
+        max-width: 350px;
+        width: 90%;
+    }
+
+    .editing-field textarea {
+        max-width: 400px;
+        width: 95%;
+    }
+
+
+
+
+
+
 }
