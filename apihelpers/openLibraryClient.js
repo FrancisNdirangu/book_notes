@@ -1,5 +1,6 @@
 import axios from "axios";
 import "dotenv/config"
+import Fuse from 'fuse.js'
 
 
 // I will create a client that can be reused
@@ -24,13 +25,33 @@ export const searchBookWithCover = async (title) => {
         q: title.trim(),
         fields: "title,author_name,cover_edition_key,first_publish_year,series_key,series_name,series_position",
         lang:"eng",
-        limit:3
+        limit:10
       }
     });
 
-    const book = response.data.docs[0]; //using the first result only despite the limit giving us the top 3 results in english
+    const unsearchedResponses = response.data.docs; //using the first result only despite the limit giving us the top 3 results in english
 
-    if (!book) {
+    const listTitles = [];
+
+    for (let i = 0; i<unsearchedResponses.length; i++) {
+      const eachResponse = unsearchedResponses[i];
+      const titleBook = eachResponse.title
+      listTitles.push({title:titleBook})
+    }
+
+    const fuse = new Fuse(listTitles,{useTokenSearch:true,keys:['title'],findAllMatches:true});
+
+    const searchResults = fuse.search(title.trim)
+
+    sortedResults = searchResults.sort((a,b) => a.score - b.score);
+    console.log(sortedResults);
+    const bestResult = sortedResults[0];
+    const bestResultIndex = bestResult.refindex;
+
+    const book = unsearchedResponses[bestResultIndex]; //the book with the best match
+
+
+    if (response.data.numFound == 0) {
       return null;
     }
 
