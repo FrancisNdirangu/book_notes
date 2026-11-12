@@ -33,7 +33,7 @@ export const createBookCoverLinks = async (req, res, next) => {
         const current_olid = record.olid
         console.log('current olid:',current_olid);
         const link = cover_base_link + current_olid + "-M.jpg";
-        const addLinksToDB = apiModel.addBookCoverLink(link, record.id)
+        const addLinksToDB = await apiModel.addBookCoverLink(link, record.id)
       })
     }
     next();
