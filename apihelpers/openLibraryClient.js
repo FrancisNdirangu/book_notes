@@ -30,13 +30,13 @@ openLibraryClient.interceptors.response.use(
     const shouldRetry = !error.response || (error.response.status >= 500 && error.response.status < 600);
 
     if(!shouldRetry) {
-      throw Promise.reject(error);
+      throw new Error('the error is not a network or server error');
     }
 
     config._retryCount = config._retryCount ?? 0;
 
     if (config._retryCount >= max_retries) {
-      return Promise.reject(error);
+      throw new Error('max retries reached');
     }
 
     config._retryCount += 1;
@@ -61,6 +61,10 @@ export const searchBookWithCover = async (title) => {
       }
     });
 
+    if (response.data.numFound == 0) {
+      return null;
+    }
+
     const unsearchedResponses = response.data.docs; //using the first result only despite the limit giving us the top 3 results in english
 
     const listTitles = [];
@@ -71,25 +75,23 @@ export const searchBookWithCover = async (title) => {
       listTitles.push({title:titleBook})
     }
 
-    const fuse = new Fuse(listTitles,{useTokenSearch:true,keys:['title'],findAllMatches:true});
+    const fuse = new Fuse(listTitles,{useTokenSearch:true,keys:['title'],findAllMatches:true,includeScore:true});
 
-    const searchResults = fuse.search(title.trim)
+    const searchResults = fuse.search(title)
 
     sortedResults = searchResults.sort((a,b) => a.score - b.score);
     console.log(sortedResults);
     const bestResult = sortedResults[0];
-    const bestResultIndex = bestResult.refindex;
+    const bestResultIndex = bestResult ? bestResult.refIndex: null;
 
     const book = unsearchedResponses[bestResultIndex]; //the book with the best match
 
 
-    if (response.data.numFound == 0) {
-      return null;
-    }
+
 
 
     // the line below start by checking if the olid exists, if it does it creates the url using the structure 
-    const coverURL = book.cover_edition_key ? `https://covers.openlibrary.org/a/olid/${book.cover_edition_key}-M.jpg` : null;
+    const coverURL = book.cover_edition_key ? `https://covers.openlibrary.org/b/olid/${book.cover_edition_key}-M.jpg` : null;
 
 
     return {
