@@ -19,6 +19,7 @@ export const openLibraryClient = axios.create({
 
 
 const max_retries = 3;
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve,ms));
 
 openLibraryClient.interceptors.response.use(
   (response) => response,
@@ -39,6 +40,10 @@ openLibraryClient.interceptors.response.use(
     }
 
     config._retryCount += 1;
+
+    const backoff = 500*2 **config._retryCount;
+    await delay(backoff);
+
     return openLibraryClient(config);
 
   }
