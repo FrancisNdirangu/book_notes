@@ -17,6 +17,33 @@ export const openLibraryClient = axios.create({
 
 });
 
+
+const max_retries = 3;
+
+openLibraryClient.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const config = error.config;
+
+    //only retry on network errors or 5xx server errors
+    const shouldRetry = !error.response || (error.response.status >= 500 && error.response.status < 600);
+
+    if(!shouldRetry) {
+      throw Promise.reject(error);
+    }
+
+    config._retryCount = config._retryCount ?? 0;
+
+    if (config._retryCount >= max_retries) {
+      return Promise.reject(error);
+    }
+
+    config._retryCount += 1;
+    return openLibraryClient(config);
+
+  }
+);
+
 export const searchBookWithCover = async (title) => {
 
   try {
