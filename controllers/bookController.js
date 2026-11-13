@@ -1,7 +1,7 @@
 import { booksJsonResponse } from "../apihelpers/bookApi.js";
 import { bookModel } from "../models/bookModel.js";
 import {checkOLID} from "../services/bookService.js";
-import {deleteBookService} from "../services/crud_service.js";
+import {AddBookService, deleteBookService} from "../services/crud_service.js";
 import { checkBookResults } from "../services/bookService.js";
 import { bookSearchResults } from "../apihelpers/bookApi.js";
 import { bookInAPI,searchBookWithCover } from "../apihelpers/openLibraryClient.js";
@@ -35,19 +35,16 @@ export const addBookNotes = async (req, res, next) => {
     // const searchResults = await searchBookWithCover(bookTitle);
     // console.log(`The result about whether the book exists is:`,confirmBookInAPI);
     // // if (confirmBookInAPI) {
-      const added = await bookModel.addBook(
-        bookTitle,
-        review,
-        dateRead,
-        bookRating
-      );
-    // }
-    // // const added = await bookModel.addBook(
-    //   bookTitle,
-    //   review,
-    //   dateRead,
-    //   bookRating,
-    // );
+
+      // const added = await bookModel.addBook(
+      //   bookTitle,
+      //   review,
+      //   dateRead,
+      //   bookRating
+      // );
+
+      const addingService = await AddBookService(bookTitle,bookRating,dateRead,review);
+
 
     res.redirect("/");
   } catch (error) {

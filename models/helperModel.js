@@ -24,6 +24,6 @@ export async function dbBookID(title) {
   const result = await db.query(query,[title]);
   console.log('ID value of what book we added:',result);
   const actualIdValue = result.rows[0].id;
-  console.log('Actual ID value itself:',id);
+  console.log('Actual ID value itself:',actualIdValue);
   return actualIdValue
 }
