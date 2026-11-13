@@ -17,3 +17,13 @@ export async function  updateBookCover(id,updatedOLID,book_cover_link) {
   const update = db.query(query,[updatedOLID,book_cover_link,id]);
   console.log(`OLID and book cover link have been updated for id: ${id}`);
 }
+
+export async function dbBookID(title) {
+  const query = 'SELECT id FROM book_notes WHERE title=$1';
+
+  const result = await db.query(query,[title]);
+  console.log('ID value of what book we added:',result);
+  const actualIdValue = result.rows[0].id;
+  console.log('Actual ID value itself:',id);
+  return actualIdValue
+}
