@@ -82,8 +82,7 @@ export const searchBookWithCover = async (title) => {
     const searchResults = fuse.search(title);
     console.log(searchResults);
 
-    //sortedResults = searchResults.sort((a,b) => a.score - b.score);
-    //console.log('The sortedResults:',sortedResults);
+    //ive notised that fuse.search will sort the array of results starting with the lowest score which is the best result
     const bestResult = searchResults[0];
     console.log('The best match',bestResult);
     const bestResultIndex = bestResult ? bestResult.refIndex: null;
