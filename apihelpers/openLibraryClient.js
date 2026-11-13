@@ -75,16 +75,22 @@ export const searchBookWithCover = async (title) => {
       listTitles.push({title:titleBook})
     }
 
+    console.log('List of Titles in Response:',listTitles);
+
     const fuse = new Fuse(listTitles,{useTokenSearch:true,keys:['title'],findAllMatches:true,includeScore:true});
 
-    const searchResults = fuse.search(title)
+    const searchResults = fuse.search(title);
+    console.log(searchResults);
 
-    sortedResults = searchResults.sort((a,b) => a.score - b.score);
-    console.log(sortedResults);
-    const bestResult = sortedResults[0];
+    //sortedResults = searchResults.sort((a,b) => a.score - b.score);
+    //console.log('The sortedResults:',sortedResults);
+    const bestResult = searchResults[0];
+    console.log('The best match',bestResult);
     const bestResultIndex = bestResult ? bestResult.refIndex: null;
+    console.log('Index of best match:',bestResultIndex);
 
     const book = unsearchedResponses[bestResultIndex]; //the book with the best match
+    console.log('best response from server:',book);
 
 
 
