@@ -3,6 +3,7 @@ import { bookModel } from "../models/bookModel.js";
 import {currentTitle, updateBookCover} from "../models/helperModel.js";
 import { bookSearchResults } from "../apihelpers/bookApi.js";
 import { searchBookWithCover } from "../apihelpers/openLibraryClient.js";
+import {apiModel} from "../models/apiDataModel.js";
 
 export async function checkOLID(id,updatedTitle) {
 
@@ -47,4 +48,20 @@ export async function checkBookResults(title) {
     console.log('there are no results for that book');
   }
 
+}
+
+
+export async function refreshMetadata(id) {
+  try {const postId = id;
+
+    //retrieves the title from the db
+    const title = currentTitle(postId);  
+
+    //uses the title on the search api
+    const newMetadata = searchBookWithCover(title);
+    //updates the metadata in the db
+    const updateDB = apiModel.addApiDataFinal(newMetadata,postId);
+  } catch(error) {
+    console.error('refreshMetadata service function failed:',error);
+  }
 }
