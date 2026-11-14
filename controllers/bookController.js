@@ -45,7 +45,7 @@ export const editBookNotes = async (req, res, next) => {
     const editedNotes = req.body.notes;
     const newRating = req.body.rating;
 
-    if (bookInAPI(editedTitle)) { 
+    if (await bookInAPI(editedTitle)) { 
       const updateOLID = await checkOLID(bookId,editedTitle) };
 
     const edited = await bookModel.editSpecificBook(
