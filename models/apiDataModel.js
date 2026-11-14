@@ -18,7 +18,7 @@ export class apiModel {
   }
 
   static async addApiDataFinal(apiResponse,id) {
-    const AddedResponse = await db.query("UPDATE book_notes SET olid=$1,original_title=$2,publication_year=$3,author=$4 WHERE id=$5",[apiResponse.olid,apiResponse.title,apiResponse.year_published,apiResponse.author,id]);
+    const AddedResponse = await db.query("UPDATE book_notes SET olid=$1,original_title=$2,publication_year=$3,author=$4, book_cover_link=$5 WHERE id=$6",[apiResponse.olid,apiResponse.title,apiResponse.year_published,apiResponse.author,apiResponse.book_cover_url,id]);
     return AddedResponse.rows
   }
 
