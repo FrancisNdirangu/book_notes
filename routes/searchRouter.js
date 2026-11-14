@@ -19,7 +19,7 @@ import {recordExists} from "../middleware/notFound.js";
 
 const router = express.Router();
 
-router.get("/",bookExistsInAPI,nullOlidRows ,createBookCoverLinks,listAllBooks);
+router.get("/",listAllBooks);
 
 router.get("/:id/view", recordExists,viewSpecificReview);
 
