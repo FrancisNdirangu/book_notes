@@ -16,7 +16,7 @@ export async function viewSpecificReview(req, res, next) {
   try {
     const reviewID = req.params.id;
     const specificReview = await bookModel.viewSpecificBook(reviewID);
-    console.log(specificReview);
+    // console.log(specificReview);
 
     res.render("../views/specificView.ejs", {
       blog: specificReview,

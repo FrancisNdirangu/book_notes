@@ -95,18 +95,30 @@ label {
 }
 
 .page-content {
-  
-    /* grid-column: 2/-1; */
-    /* grid-row: 2/3; */
-    /* justify-self: center; */
     grid-row:2/3;
     grid-column: 2/3;
     margin-left: 5%;
+}
 
-    /* display: grid;
-    padding: 20px;
-    margin: 20px;
-    width: 100%; */
+.specificViewItems {
+    display: flex;
+    flex-direction: row;
+}
+
+.specificViewItems article {
+    margin-left: 2rem;
+}
+
+.page-content .api-data {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.page-content .specific-user-data {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
 }
 
 .allNote ul {

@@ -2,12 +2,25 @@
 <%- include('partials/navbar.ejs') %>
 
                 <div class="page-content">
-            <main>
+            <main class="specificViewItems">
+                        <img src="<%=blog.book_cover_link%>"/>
+                        <article>
                         <h2 >Book Notes <%= id%></h1>
-                        <h3><%=blog.title%></h1>
-                        <h3><%=blog.rating%></h2>
+                        <div class="api-data">
+                            <h3><%=blog.title%></h3>
+                            <h3>Author: <%=blog.author ? blog.author : null%></h3>
+                            <h3>Publication Year: <%=blog.publication_year%></h3>
+                        </div>
+                        <div class="specific-user-data">
+                            <h4>Rating: <%=blog.rating%></h4>
+                            <h4>Date Read: <%=blog.date_read%></h4>
+                        </div>
+                        
+                        
+                        <h3>Review</h3>
                         <p><%=blog.notes%></p>
-            </main>
+            </article>
+                    </main>
 
                 </div>
         </div>
