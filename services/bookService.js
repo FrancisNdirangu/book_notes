@@ -55,12 +55,13 @@ export async function refreshMetadata(id) {
   try {const postId = id;
 
     //retrieves the title from the db
-    const title = currentTitle(postId);  
+    const title = await currentTitle(postId);  
+    console.log(title);
 
     //uses the title on the search api
-    const newMetadata = searchBookWithCover(title);
+    const newMetadata = await searchBookWithCover(title);
     //updates the metadata in the db
-    const updateDB = apiModel.addApiDataFinal(newMetadata,postId);
+    const updateDB = await apiModel.addApiDataFinal(newMetadata,postId);
   } catch(error) {
     console.error('refreshMetadata service function failed:',error);
   }
