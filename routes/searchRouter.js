@@ -2,7 +2,8 @@ import {
   getBookInfo,
   addBookNotes,
   editBookNotes,
-  deleteBookNotes
+  deleteBookNotes,
+  refreshData
 } from "../controllers/bookController.js";
 import {
   listAllBooks,
@@ -28,6 +29,8 @@ router.post("/addBookNotes",validateAddBookNotes(bookSchema), addBookNotes);
 
 router.get("/:id/edit", recordExists,editBookPage);
 router.post("/books/:id/edit",validateEditBookNotes(editedBookSchema),editBookNotes);
+
+router.post('/:id/refresh',refreshData);
 
 router.get("/search", getBookInfo);
 router.post("/search", getBookInfo);
