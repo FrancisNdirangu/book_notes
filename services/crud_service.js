@@ -14,7 +14,7 @@ export async function AddBookService(title,bookRating,dateRead,review) {
 
   const existsInAPI = await bookInAPI(title);
   //adding a 0.5 sec delay to avoid rate limiting
-  setTimeout(() => { console.log("Small delay to avoid rate limiting");},500);
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve,ms));
 
 
   const added = bookModel.addBook(title,review,dateRead,bookRating);
