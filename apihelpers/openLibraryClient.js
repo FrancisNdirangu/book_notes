@@ -96,8 +96,10 @@ export const searchBookWithCover = async (title) => {
 
 
     // the line below start by checking if the olid exists, if it does it creates the url using the structure 
-    const coverURL = book.cover_edition_key ? `https://covers.openlibrary.org/b/olid/${book.cover_edition_key}-M.jpg` : null;
 
+    //I will confirm that the fuzzy search returned something by checking if the best match index exists
+    if (bestResultIndex){ const coverURL = book.cover_edition_key ? `https://covers.openlibrary.org/b/olid/${book.cover_edition_key}-M.jpg` : null;
+    }
 
     return {
       title:book.title,
