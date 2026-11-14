@@ -18,16 +18,14 @@ export async function AddBookService(title,bookRating,dateRead,review) {
 
 
   const added = bookModel.addBook(title,review,dateRead,bookRating);
-  if (existsInAPI) {
-    const bookApiData = await searchBookWithCover(title);
-    const bookID = await dbBookID(title);
+  const bookApiData = await searchBookWithCover(title);
+  const bookID = await dbBookID(title);
     // const original_title = bookApiData.title;
     // const olid = bookApiData.olid;
     // const publication_year = bookApiData.year_published;
     // const cover_url = bookApiData.book_cover_url;
 
-    const enrichmentDataAdded = await apiModel.addApiDataFinal(bookApiData,bookID);
+  const enrichmentDataAdded = await apiModel.addApiDataFinal(bookApiData,bookID);
 
-  }
   
 }
