@@ -1,6 +1,6 @@
 import { booksJsonResponse } from "../apihelpers/bookApi.js";
 import { bookModel } from "../models/bookModel.js";
-import {checkOLID} from "../services/bookService.js";
+import {checkOLID, refreshMetadata} from "../services/bookService.js";
 import {AddBookService, deleteBookService} from "../services/crud_service.js";
 import { checkBookResults } from "../services/bookService.js";
 import { bookSearchResults } from "../apihelpers/bookApi.js";
@@ -75,5 +75,17 @@ export const deleteBookNotes = async (req, res, next) => {
   } catch (error) {
     console.error('Could not extract the id from the delete button',error);
     next(error);
+  }
+}
+
+export const refreshData = async (req,res,next) => {
+  try {
+    const bookId = req.params.id;
+
+    const refresh = await refreshMetadata(bookId);
+
+    res.redirect(`/${bookId}/view`);
+  } catch (error) {
+    console.error('refreshData controller failed because of:',error);
   }
 }
