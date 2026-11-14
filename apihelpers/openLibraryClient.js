@@ -80,7 +80,7 @@ export const searchBookWithCover = async (title) => {
     const fuse = new Fuse(listTitles,{useTokenSearch:true,keys:['title'],findAllMatches:true,includeScore:true});
 
     const searchResults = fuse.search(title);
-    console.log(searchResults);
+    //console.log(searchResults);
 
     //ive notised that fuse.search will sort the array of results starting with the lowest score which is the best result
     const bestResult = searchResults[0];
