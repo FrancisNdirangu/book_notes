@@ -19,6 +19,11 @@ export async function AddBookService(title,bookRating,dateRead,review) {
 
   const added = await bookModel.addBook(title,review,dateRead,bookRating);
   const bookApiData = await searchBookWithCover(title);
+
+  // the if statement below checks if the book is in the api and exits the AddBookService function if it is not since there is no need to look for metadata if the book is not in the function
+  if (bookApiData == null){
+    return ;
+  }
   const bookID = await dbBookID(title);
     // const original_title = bookApiData.title;
     // const olid = bookApiData.olid;
