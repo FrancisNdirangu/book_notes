@@ -62,7 +62,7 @@ export const searchBookWithCover = async (title) => {
     });
 
     if (response.data.numFound == 0) {
-      return null;
+      return new Error('The book searched for has zero results in the API');
     }
 
     const unsearchedResponses = response.data.docs; //using the first result only despite the limit giving us the top 3 results in english
@@ -75,6 +75,11 @@ export const searchBookWithCover = async (title) => {
       listTitles.push({title:titleBook})
     }
 
+    //check to see if listTitles remains empty
+    if (listTitles.length == 0) {
+      return new Error('The list of titles from the api is zero.');
+    }
+
     console.log('List of Titles in Response:',listTitles);
 
     const fuse = new Fuse(listTitles,{useTokenSearch:true,keys:['title'],findAllMatches:true,includeScore:true});
@@ -85,6 +90,13 @@ export const searchBookWithCover = async (title) => {
     //ive notised that fuse.search will sort the array of results starting with the lowest score which is the best result
     const bestResult = searchResults[0];
     console.log('The best match',bestResult);
+
+    //if the match is not good we should send an error
+    if (bestResult.score > 0.6) {
+      return new Error('The fuzzy match could not find a good match');
+    }
+
+
     const bestResultIndex = bestResult ? bestResult.refIndex: null;
     console.log('Index of best match:',bestResultIndex);
 
