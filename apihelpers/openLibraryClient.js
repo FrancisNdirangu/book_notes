@@ -153,3 +153,40 @@ export const bookInAPI = async (title) => {
     throw error;
   }
 }
+
+export const getBookByIdentifier = async (olid) => {
+  try{
+    
+    const olid_search = `edition_key:${olid.trim()}`;
+
+    const response = await openLibraryClient.get('/search.json',{
+      params: {
+        q: olid_search,
+        lang:"eng",
+        limit:10
+      }
+    });
+
+    if (response.data.numFound ==0 ) {
+      return new Error('The olid search found no result');
+    }
+
+    //only one object will be returned so we dont need matching
+    const book = response.data.docs[0];
+
+    const coverURL = book.cover_edition_key ? `https://covers.openlibrary.org/b/olid/${book.cover_edition_key}-M.jpg` : null;
+
+
+    return {
+      title:book.title,
+      author:book.author_name ? book.author_name[0] : "Unknown Author",
+      olid: book.cover_edition_key,
+      year_published: book.first_publish_year,
+      book_cover_url: coverURL, //null if there is no url
+    }
+
+  } catch (error) {
+    console.error('The open library cleint search using olid failed',error.message);
+    throw error;
+  }
+}
