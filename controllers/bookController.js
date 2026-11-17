@@ -54,16 +54,16 @@ export const editBookNotes = async (req, res, next) => {
     if(!req.body || Object.keys(req.body).length === 0) {
       throw new Error('The HTTP connection that fetches the req.body has failed');
     }
-
-    if (await bookInAPI(editedTitle)) { 
-      const updateOLID = await checkOLID(bookId,editedTitle) };
-
     const edited = await bookModel.editSpecificBook(
       bookId,
       editedNotes,
       newRating,
       editedTitle
     );
+
+
+    if (await bookInAPI(editedTitle)) { 
+      const updateOLID = await checkOLID(bookId,editedTitle) };
 
     res.redirect("/");
   } catch (error) {
