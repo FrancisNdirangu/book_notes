@@ -7,9 +7,9 @@ export async function currentTitle(id) {
   // console.log(`Current id of the edited record is: ${id}`);
   const result = await db.query(query,[currentID]);
   // console.log(`the result is: ${result}`);
-  const title = result.rows[0].title;
+  const title = result.rows[0].title ?? null;
   // console.log(`current title is ${title}`)
-  return title || null;
+  return title;
 }
 
 export async function  updateBookCover(id,updatedOLID,book_cover_link) {
