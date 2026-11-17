@@ -51,8 +51,8 @@ export const editBookNotes = async (req, res, next) => {
     const newRating = req.body.rating;
 
 
-    if(!req.body || Object.keys((req.body.length === 0))) {
-      throw new Error('The HTTP connection that fetches the req.body has failed')
+    if(!req.body || Object.keys(req.body).length === 0) {
+      throw new Error('The HTTP connection that fetches the req.body has failed');
     }
 
     if (await bookInAPI(editedTitle)) { 
