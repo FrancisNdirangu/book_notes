@@ -56,13 +56,18 @@ export async function refreshMetadata(id) {
 
     //retrieves the title from the db
     const title = await currentTitle(postId);  
+
+    if (title == null) {
+      return null;
+    }
     //console.log(title);
 
     //uses the title on the search api
     const newMetadata = await searchBookWithCover(title);
 
     if (newMetadata == null) {
-      throw new Error('The metadata expected was not returned, new title may not exist in the api.');
+      //throw new Error('The metadata expected was not returned, new title may not exist in the api.');
+      return null;
     }
 
 

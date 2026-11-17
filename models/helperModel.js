@@ -9,7 +9,7 @@ export async function currentTitle(id) {
   // console.log(`the result is: ${result}`);
   const title = result.rows[0].title;
   // console.log(`current title is ${title}`)
-  return title
+  return title || null;
 }
 
 export async function  updateBookCover(id,updatedOLID,book_cover_link) {
