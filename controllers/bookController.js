@@ -97,5 +97,6 @@ export const refreshData = async (req,res,next) => {
     res.redirect(`/${bookId}/view`);
   } catch (error) {
     console.error('refreshData controller failed because of:',error);
+    throw error
   }
 }
