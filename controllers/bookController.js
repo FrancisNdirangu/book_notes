@@ -92,9 +92,6 @@ export const refreshData = async (req,res,next) => {
   try {
     const bookId = req.params.id;
 
-    if(!req.body || Object.keys(req.body).length === 0) {
-      throw new Error('HTTP connection not working. Failed to retrieve req.body.');
-    }
 
     const refresh = await refreshMetadata(bookId);
 
