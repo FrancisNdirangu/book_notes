@@ -12,10 +12,6 @@ export async function deleteBookService(id){
 
 export async function AddBookService(title,bookRating,dateRead,review) {
 
-  //const existsInAPI = await bookInAPI(title);
-  //adding a 0.5 sec delay to avoid rate limiting
-  //const delay = (ms) => new Promise((resolve) => setTimeout(resolve,ms));
-
 
   const added = await bookModel.addBook(title,review,dateRead,bookRating);
   const bookApiData = await searchBookWithCover(title);
@@ -25,10 +21,6 @@ export async function AddBookService(title,bookRating,dateRead,review) {
     return new Error('the book does not exist in the api, hence no metadata can be found');
   }
   const bookID = await dbBookID(title);
-    // const original_title = bookApiData.title;
-    // const olid = bookApiData.olid;
-    // const publication_year = bookApiData.year_published;
-    // const cover_url = bookApiData.book_cover_url;
 
   const enrichmentDataAdded = await apiModel.addApiDataFinal(bookApiData,bookID);
 
