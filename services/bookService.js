@@ -56,7 +56,7 @@ export async function refreshMetadata(id) {
 
     //retrieves the title from the db
     const title = await currentTitle(postId);  
-    console.log(title);
+    //console.log(title);
 
     //uses the title on the search api
     const newMetadata = await searchBookWithCover(title);
@@ -70,5 +70,6 @@ export async function refreshMetadata(id) {
     const updateDB = await apiModel.addApiDataFinal(newMetadata,postId);
   } catch(error) {
     console.error('refreshMetadata service function failed:',error);
+    throw error;
   }
 }
