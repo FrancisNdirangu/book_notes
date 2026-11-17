@@ -18,7 +18,10 @@ export async function AddBookService(title,bookRating,dateRead,review) {
 
   // the if statement below checks if the book is in the api and exits the AddBookService function if it is not since there is no need to look for metadata if the book is not in the function
   if (bookApiData == null){
-    return new Error('the book does not exist in the api, hence no metadata can be found');
+    //return new Error('the book does not exist in the api, hence no metadata can be found');
+    //returning null so the code below is not executed since we will have no metadata to add to the database
+    return null;
+
   }
   const bookID = await dbBookID(title);
 
