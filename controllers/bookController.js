@@ -30,7 +30,7 @@ export const addBookNotes = async (req, res, next) => {
     // ensure that the variables above exist
 
     if (!req.body || Object.keys(req.body).length ===0) {
-      throw new Error("HTTP error, the req body object couldnt get the variables the user inputed, it is either empty or null.")
+      throw new Error('The HTTP connection that fetches the req.body has failed');
     }
 
     const addingService = await AddBookService(bookTitle,bookRating,dateRead,review);
@@ -49,6 +49,11 @@ export const editBookNotes = async (req, res, next) => {
     const editedTitle = req.body.title;
     const editedNotes = req.body.notes;
     const newRating = req.body.rating;
+
+
+    if(!req.body || Object.keys((req.body.length === 0))) {
+      throw new Error('The HTTP connection that fetches the req.body has failed')
+    }
 
     if (await bookInAPI(editedTitle)) { 
       const updateOLID = await checkOLID(bookId,editedTitle) };
