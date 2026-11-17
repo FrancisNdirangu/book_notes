@@ -62,7 +62,8 @@ export const searchBookWithCover = async (title) => {
     });
 
     if (response.data.numFound == 0) {
-      throw new Error('The book searched for has zero results in the API');
+      //throw new Error('The book searched for has zero results in the API');
+      return null;
     }
 
     const unsearchedResponses = response.data.docs; //using the first result only despite the limit giving us the top 3 results in english
@@ -93,13 +94,12 @@ export const searchBookWithCover = async (title) => {
     }
 
     if (searchResults[0].score > 0.6) {
-      return new Error('The fuzzy match could not find a good match');
+      //return new Error('The fuzzy match could not find a good match');
+      return null;
     }
     //ive notised that fuse.search will sort the array of results starting with the lowest score which is the best result
     const bestResult = searchResults[0];
     console.log('The best match',bestResult);
-
-    
 
 
     const bestResultIndex = bestResult ? bestResult.refIndex: null;
@@ -173,7 +173,8 @@ export const getBookByIdentifier = async (olid) => {
     });
 
     if (response.data.numFound ==0 ) {
-      return new Error('The olid search found no result');
+      // return new Error('The olid search found no result');
+      return null;
     }
 
     //only one object will be returned so we dont need matching
