@@ -63,7 +63,10 @@ export const editBookNotes = async (req, res, next) => {
 
 
     if (await bookInAPI(editedTitle)) { 
-      const updateOLID = await checkOLID(bookId,editedTitle) };
+      // const updateOLID = await checkOLID(bookId,editedTitle) };
+
+      const updateOLID = await refreshMetadata(bookId) ;
+      };
 
     res.redirect("/");
   } catch (error) {
