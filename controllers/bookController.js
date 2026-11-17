@@ -26,7 +26,12 @@ export const addBookNotes = async (req, res, next) => {
     const dateRead = req.body.dateRead;
     const review = req.body.review;
 
-    console.log(bookTitle);
+    //console.log(bookTitle);
+    // ensure that the variables above exist
+
+    if (!req.body || Object.keys(req.body).length ===0) {
+      throw new Error("HTTP error, the req body object couldnt get the variables the user inputed, it is either empty or null.")
+    }
 
     const addingService = await AddBookService(bookTitle,bookRating,dateRead,review);
 
