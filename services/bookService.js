@@ -67,6 +67,7 @@ export async function refreshMetadata(id) {
 
     if (newMetadata == null) {
       //throw new Error('The metadata expected was not returned, new title may not exist in the api.');
+      const removingOldMetadata = apiModel.removeOutdatedMetadata(postId);
       return null;
     }
 
