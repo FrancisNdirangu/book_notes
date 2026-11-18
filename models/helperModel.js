@@ -1,13 +1,16 @@
 import db from "../config/db.js"
 
 export async function currentTitle(id) {
-  const query = 'SELECT title FROM book_notes WHERE id=$1';
+  const query = 'select title from book_notes where id=$1';
 
-  const currentID = id;
-  // console.log(`Current id of the edited record is: ${id}`);
-  const result = await db.query(query,[currentID]);
+  const currentid = id;
+  // console.log(`current id of the edited record is: ${id}`);
+  const result = await db.query(query,[currentid]);
   // console.log(`the result is: ${result}`);
-  const title = result.rows[0].title ?? null;
+  if (result.rows.length === 0) {
+    return null
+  }
+  const title = result.rows[0].title;
   // console.log(`current title is ${title}`)
   return title;
 }
