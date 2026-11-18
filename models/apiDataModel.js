@@ -45,7 +45,7 @@ export class apiModel {
   }
 
   static async removeOutdatedMetadata(id) {
-    const removingAction = await db.query('UPDATE book_notes set original_title=$2,olid=$2,book_cover_link=$2,publication_year=$2,author=$2  WHERE id=$1'[id,null]);
+    const removingAction = await db.query('UPDATE book_notes set original_title=$2,olid=$2,book_cover_link=$2,publication_year=$2,author=$2  WHERE id=$1',[id,null]);
     return removingAction.rows
   }
 
