@@ -64,8 +64,9 @@ export const editBookNotes = async (req, res, next) => {
 
       // const updateOLID = await checkOLID(bookId,editedTitle) };
 
-      const updateOLID = await refreshMetadata(bookId) ;
+      // const updateOLID = await refreshMetadata(bookId) ;
 
+      const updateOLID = await refreshData(bookId) ;
     res.redirect("/");
   } catch (error) {
     console.error(`Could not edit the book notes. Error:`, error);
