@@ -5,6 +5,8 @@ import {AddBookService, deleteBookService} from "../services/crud_service.js";
 import { checkBookResults } from "../services/bookService.js";
 import { bookSearchResults } from "../apihelpers/bookApi.js";
 import { bookInAPI,searchBookWithCover } from "../apihelpers/openLibraryClient.js";
+import { AppError } from "../errors/AppError.js";
+import { OpenLibraryError } from "../errors/OpenLibraryError.js"
 
 export const getBookInfo = async (req, res,next) => {
   try {
@@ -40,7 +42,7 @@ export const addBookNotes = async (req, res, next) => {
   } catch (error) {
     res.redirect("/")
     console.error("Unable to add the book to the db", error);
-    next(error);
+    if (!(error instanceof OpenLibraryError)){ next(error); }
 
 }};
 
@@ -72,7 +74,7 @@ export const editBookNotes = async (req, res, next) => {
   } catch (error) {
     res.redirect("/")
     console.error(`Could not edit the book notes. Error:`, error);
-    next(error);
+    if (!(error instanceof OpenLibraryError)){ next(error); }
   }
 };
 
