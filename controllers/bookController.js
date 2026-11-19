@@ -38,6 +38,7 @@ export const addBookNotes = async (req, res, next) => {
 
     res.redirect("/");
   } catch (error) {
+    res.redirect("/")
     console.error("Unable to add the book to the db", error);
     next(error);
 
@@ -69,6 +70,7 @@ export const editBookNotes = async (req, res, next) => {
       const updateOLID = await refreshMetadata(bookId) ;
     res.redirect("/");
   } catch (error) {
+    res.redirect("/")
     console.error(`Could not edit the book notes. Error:`, error);
     next(error);
   }

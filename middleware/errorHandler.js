@@ -9,13 +9,15 @@ export const centralErrorHandler = (err,req,res,next) => {
   const errorStack = err.stack;
 
   console.error({timestamp:new Date().toISOString(),
+                  errName: errorName,
+                  errCause: errorCause,
                   errCode:errorCode,
                   message:errorDescription,
                   stack:errorStack});
 
-  return res.status(errorCode).json({
+    return res.status(errorCode).json({
       success:false,
       error:{ code:errorCode,
         description:errorDescription } });
 
-}
+  }
