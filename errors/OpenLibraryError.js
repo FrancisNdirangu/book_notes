@@ -1,6 +1,5 @@
-import {AppError} from "AppError.js";
-
-class OpenLibraryError extends AppError{
+import { AppError } from "./AppError.js";
+export class OpenLibraryError extends AppError{
   constructor(message, statusCode,code) {
     super(message,statusCode);
 
@@ -16,7 +15,11 @@ class OpenLibraryError extends AppError{
   }
 
   static rateLimitFailure(){
-    return OpenLibraryError("Rate Limit Exceeded",429,"RATE_LIMIT_FAILURE")
+    return new OpenLibraryError("Rate Limit Exceeded",429,"RATE_LIMIT_FAILURE")
+  }
+
+  static maxRetriesFailure(){
+    return new OpenLibraryError("Max retries exceeded",503,"MAX_RETRIES_REACHED")
   }
 
   
