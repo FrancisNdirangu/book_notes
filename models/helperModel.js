@@ -1,5 +1,19 @@
 import db from "../config/db.js"
 
+export async function currentOriginalTitle(id) {
+  const query = 'select original_title from book_notes where id=$1';
+
+  const currentid = id;
+  // console.log(`current id of the edited record is: ${id}`);
+  const result = await db.query(query,[currentid]);
+  // console.log(`the result is: ${result}`);
+  if (result.rows.length === 0) {
+    return null
+  }
+  const original_title = result.rows[0].original_title;
+  // console.log(`current title is ${title}`)
+  return original_title;
+}
 export async function currentTitle(id) {
   const query = 'select title from book_notes where id=$1';
 
