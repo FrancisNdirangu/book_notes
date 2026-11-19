@@ -1,6 +1,8 @@
 import axios from "axios";
 import "dotenv/config"
 import Fuse from 'fuse.js'
+import { OpenLibraryError } from "../errors/OpenLibraryError.js";
+import { AppError } from "../errors/AppError.js";
 
 
 // I will create a client that can be reused
@@ -30,13 +32,13 @@ openLibraryClient.interceptors.response.use(
     const shouldRetry = !error.response || (error.response.status >= 500 && error.response.status < 600);
 
     if(!shouldRetry) {
-      throw new Error('the error is not a network or server error');
+      throw AppError(error.message,error.status);
     }
 
     config._retryCount = config._retryCount ?? 0;
 
     if (config._retryCount >= max_retries) {
-      throw new Error('max retries reached');
+      throw OpenLibraryError.maxRetriesFailure();
     }
 
     config._retryCount += 1;
