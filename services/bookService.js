@@ -74,17 +74,18 @@ export async function refreshMetadata(id) {
     }
 
     if ((newMetadata.title != oldOriginalTitle)) {
-      const removingOldMetadata = await apiModel.removeOutdatedMetadata(id);
-      //updates the metadata in the db
+      // const removingOldMetadata = await apiModel.removeOutdatedMetadata(id);
+      //if the titles arent equal we should immediately update the metadata
       const updateDB = await apiModel.addApiDataFinal(newMetadata,postId);
     }
 
+
+      const updateDB = await apiModel.addApiDataFinal(newMetadata,postId);
 
   } catch(error) {
     //i want to remove the old metadata in the case of a failed connection
     // if(error instanceof OpenLibraryError) {
     //    const removingOldMetadata = await apiModel.removeOutdatedMetadata(id);
-    //  }
     console.error('refreshMetadata service function failed:',error);
     throw error;
   }

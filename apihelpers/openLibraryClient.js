@@ -38,6 +38,7 @@ openLibraryClient.interceptors.response.use(
         case 403: throw OpenLibraryError.forbiddenRequestFailure();
         case 404: throw OpenLibraryError.notFoundFailure();
         case 400: throw OpenLibraryError.badRequestFailure();
+        default: throw new OpenLibraryError(error.message,error.response.status,error.name)
 
       }
     }

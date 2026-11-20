@@ -7,6 +7,7 @@ import { bookSearchResults } from "../apihelpers/bookApi.js";
 import { bookInAPI,openLibraryClient,searchBookWithCover } from "../apihelpers/openLibraryClient.js";
 import { AppError } from "../errors/AppError.js";
 import { OpenLibraryError } from "../errors/OpenLibraryError.js"
+import { currentTitle } from "../models/helperModel.js";
 
 export const getBookInfo = async (req, res,next) => {
   try {
@@ -28,8 +29,6 @@ export const addBookNotes = async (req, res, next) => {
     const dateRead = req.body.dateRead;
     const review = req.body.review;
 
-    //console.log(bookTitle);
-    // ensure that the variables above exist
 
     if (!req.body || Object.keys(req.body).length ===0) {
       throw new Error('The HTTP connection that fetches the req.body has failed');
@@ -56,6 +55,7 @@ export const editBookNotes = async (req, res, next) => {
     const editedNotes = req.body.notes;
     const newRating = req.body.rating;
 
+    const oldTitle = await currentTitle(bookId);
 
     if(!req.body || Object.keys(req.body).length === 0) {
       throw new Error('The HTTP connection that fetches the req.body has failed');
@@ -68,11 +68,10 @@ export const editBookNotes = async (req, res, next) => {
     );
 
 
-      // const updateOLID = await checkOLID(bookId,editedTitle) };
-
-      // const updateOLID = await refreshMetadata(bookId) ;
-
-      const updateOLID = await refreshMetadata(bookId) ;
+    //when editing we should only refresh the metadata when the title is changed
+     if(oldTitle != editedTitle){  
+       const updateOLID = await refreshMetadata(bookId);
+     }
     res.redirect("/");
   } catch (error) {
     if (error instanceof OpenLibraryError){ res.redirect("/") }

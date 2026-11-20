@@ -31,7 +31,7 @@ export class OpenLibraryError extends AppError{
   }
 
   static notFoundFailure(){
-    return new OpenLibraryError("Not found failure on open library"),404,"NOT_FOUND_FAILURE"
+    return new OpenLibraryError("Not found failure on open library",404,"NOT_FOUND_FAILURE")
   }
 
   
