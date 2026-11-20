@@ -32,7 +32,7 @@ openLibraryClient.interceptors.response.use(
     const shouldRetry = !error.response || (error.response.status >= 500 && error.response.status < 600);
 
     if(!shouldRetry) {
-      throw AppError(error.message,error.status);
+      throw OpenLibraryError.rateLimitFailure()
     }
 
     config._retryCount = config._retryCount ?? 0;
