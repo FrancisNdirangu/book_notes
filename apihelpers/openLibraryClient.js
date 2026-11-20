@@ -32,7 +32,14 @@ openLibraryClient.interceptors.response.use(
     const shouldRetry = !error.response || (error.response.status >= 500 && error.response.status < 600);
 
     if(!shouldRetry) {
-      throw OpenLibraryError.rateLimitFailure()
+      // throw OpenLibraryError.rateLimitFailure()
+      switch (error.response.status){
+        case 429: throw OpenLibraryError.rateLimitFailure();
+        case 403: throw OpenLibraryError.forbiddenRequestFailure();
+        case 404: throw OpenLibraryError.notFoundFailure();
+        case 400: throw OpenLibraryError.badRequestFailure();
+
+      }
     }
 
     config._retryCount = config._retryCount ?? 0;

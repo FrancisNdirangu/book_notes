@@ -69,17 +69,22 @@ export async function refreshMetadata(id) {
 
     if (newMetadata == null) {
       //throw new Error('The metadata expected was not returned, new title may not exist in the api.');
+      const removingOldMetadata = await apiModel.removeOutdatedMetadata(id);
       return null;
     }
 
+    if ((newMetadata.title != oldOriginalTitle)) {
+      const removingOldMetadata = await apiModel.removeOutdatedMetadata(id);
+      //updates the metadata in the db
+      const updateDB = await apiModel.addApiDataFinal(newMetadata,postId);
+    }
 
-    //updates the metadata in the db
-    const updateDB = await apiModel.addApiDataFinal(newMetadata,postId);
+
   } catch(error) {
     //i want to remove the old metadata in the case of a failed connection
-    if(error instanceof OpenLibraryError) {
-      const removingOldMetadata = await apiModel.removeOutdatedMetadata(id);
-    }
+    // if(error instanceof OpenLibraryError) {
+    //    const removingOldMetadata = await apiModel.removeOutdatedMetadata(id);
+    //  }
     console.error('refreshMetadata service function failed:',error);
     throw error;
   }
