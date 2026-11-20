@@ -53,11 +53,15 @@ export async function checkBookResults(title) {
 
 
 export async function refreshMetadata(id) {
-  try {const postId = id;
+    const postId = id;
 
     //retrieves the title from the db
     const title = await currentTitle(postId);  
     const oldOriginalTitle = await currentOriginalTitle(postId);
+
+
+
+  try {    
 
     if (title == null) {
       return null;
@@ -69,15 +73,15 @@ export async function refreshMetadata(id) {
 
     if (newMetadata == null) {
       //throw new Error('The metadata expected was not returned, new title may not exist in the api.');
-      const removingOldMetadata = await apiModel.removeOutdatedMetadata(id);
+      // const removingOldMetadata = await apiModel.removeOutdatedMetadata(id);
       return null;
     }
 
-    if ((newMetadata.title != oldOriginalTitle)) {
-      // const removingOldMetadata = await apiModel.removeOutdatedMetadata(id);
-      //if the titles arent equal we should immediately update the metadata
-      const updateDB = await apiModel.addApiDataFinal(newMetadata,postId);
-    }
+    // if ((newMetadata.title != oldOriginalTitle)) {
+    //   // const removingOldMetadata = await apiModel.removeOutdatedMetadata(id);
+    //   //if the titles arent equal we should immediately update the metadata
+    //   const updateDB = await apiModel.addApiDataFinal(newMetadata,postId);
+    // }
 
 
       const updateDB = await apiModel.addApiDataFinal(newMetadata,postId);
@@ -90,3 +94,11 @@ export async function refreshMetadata(id) {
     throw error;
   }
 }
+
+export async function removeMetadata(id) {
+    const postId = id;
+
+
+    const removingOldMetadata = await apiModel.removeOutdatedMetadata(id);
+}
+

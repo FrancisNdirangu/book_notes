@@ -1,6 +1,6 @@
 import { booksJsonResponse } from "../apihelpers/bookApi.js";
 import { bookModel } from "../models/bookModel.js";
-import {checkOLID, refreshMetadata} from "../services/bookService.js";
+import {checkOLID, refreshMetadata, removeMetadata} from "../services/bookService.js";
 import {AddBookService, deleteBookService} from "../services/crud_service.js";
 import { checkBookResults } from "../services/bookService.js";
 import { bookSearchResults } from "../apihelpers/bookApi.js";
@@ -49,7 +49,6 @@ export const addBookNotes = async (req, res, next) => {
 }};
 
 export const editBookNotes = async (req, res, next) => {
-  try {
     const bookId = req.params.id;
     const editedTitle = req.body.title;
     const editedNotes = req.body.notes;
@@ -60,7 +59,9 @@ export const editBookNotes = async (req, res, next) => {
     if(!req.body || Object.keys(req.body).length === 0) {
       throw new Error('The HTTP connection that fetches the req.body has failed');
     }
-      const edited = await bookModel.editSpecificBook(
+ 
+  try {
+     const edited = await bookModel.editSpecificBook(
       bookId,
       editedNotes,
       newRating,
@@ -74,7 +75,14 @@ export const editBookNotes = async (req, res, next) => {
      }
     res.redirect("/");
   } catch (error) {
-    if (error instanceof OpenLibraryError){ res.redirect("/") }
+    if ( oldTitle != editedTitle ) {
+      const clearMetadata = removeMetadata(id);
+    }
+
+
+    if (error instanceof OpenLibraryError){ 
+      res.redirect("/") 
+    }
     console.error(`Could not edit the book notes. Error:`, error);
     if (!(error instanceof OpenLibraryError)){ next(error); }
   }
