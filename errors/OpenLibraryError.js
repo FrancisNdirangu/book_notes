@@ -22,5 +22,17 @@ export class OpenLibraryError extends AppError{
     return new OpenLibraryError("Max retries exceeded",503,"MAX_RETRIES_REACHED")
   }
 
+  static badRequestFailure() {
+    return new OpenLibraryError("Bad Request",400,"BAD_REQUEST")
+  }
+
+  static forbiddenRequestFailure(){
+    return new OpenLibraryError("Forbidden Request made to open library",403,"FORBIDDEN_REQUEST_FAILURE")
+  }
+
+  static notFoundFailure(){
+    return new OpenLibraryError("Not found failure on open library"),404,"NOT_FOUND_FAILURE"
+  }
+
   
 }
