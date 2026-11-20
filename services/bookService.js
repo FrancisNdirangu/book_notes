@@ -1,9 +1,10 @@
 import { booksJsonResponse } from "../apihelpers/bookApi.js";
 import { bookModel } from "../models/bookModel.js";
-import {currentTitle, updateBookCover} from "../models/helperModel.js";
+import {currentOriginalTitle, currentTitle, updateBookCover} from "../models/helperModel.js";
 import { bookSearchResults } from "../apihelpers/bookApi.js";
 import { searchBookWithCover } from "../apihelpers/openLibraryClient.js";
 import {apiModel} from "../models/apiDataModel.js";
+import { OpenLibraryError } from "../errors/OpenLibraryError.js";
 
 export async function checkOLID(id,updatedTitle) {
 
@@ -56,6 +57,7 @@ export async function refreshMetadata(id) {
 
     //retrieves the title from the db
     const title = await currentTitle(postId);  
+    const oldOriginalTitle = await currentOriginalTitle(postId);
 
     if (title == null) {
       return null;
@@ -67,8 +69,6 @@ export async function refreshMetadata(id) {
 
     if (newMetadata == null) {
       //throw new Error('The metadata expected was not returned, new title may not exist in the api.');
-      //we should only remove the metadata when the new title is different from the old title
-      const removingOldMetadata = await apiModel.removeOutdatedMetadata(postId);
       return null;
     }
 
@@ -76,6 +76,10 @@ export async function refreshMetadata(id) {
     //updates the metadata in the db
     const updateDB = await apiModel.addApiDataFinal(newMetadata,postId);
   } catch(error) {
+    //i want to remove the old metadata in the case of a failed connection
+    if(error instanceof OpenLibraryError) {
+      const removingOldMetadata = await apiModel.removeOutdatedMetadata(id);
+    }
     console.error('refreshMetadata service function failed:',error);
     throw error;
   }
