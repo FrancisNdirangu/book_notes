@@ -71,12 +71,14 @@ export const editBookNotes = async (req, res, next) => {
 
     //when editing we should only refresh the metadata when the title is changed
      if(oldTitle != editedTitle){  
+       const clearMetadata = await removeMetadata(bookId);
        const updateOLID = await refreshMetadata(bookId);
      }
     res.redirect("/");
   } catch (error) {
-    if ( oldTitle != editedTitle ) {
-      const clearMetadata = removeMetadata(id);
+    if ( ( oldTitle != editedTitle ) && (error instanceof OpenLibraryError) ) {
+      const clearMetadata = await removeMetadata(bookId);
+      res.redirect("/")
     }
 
 
