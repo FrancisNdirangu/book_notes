@@ -4,7 +4,7 @@ import {checkOLID, refreshMetadata} from "../services/bookService.js";
 import {AddBookService, deleteBookService} from "../services/crud_service.js";
 import { checkBookResults } from "../services/bookService.js";
 import { bookSearchResults } from "../apihelpers/bookApi.js";
-import { bookInAPI,searchBookWithCover } from "../apihelpers/openLibraryClient.js";
+import { bookInAPI,openLibraryClient,searchBookWithCover } from "../apihelpers/openLibraryClient.js";
 import { AppError } from "../errors/AppError.js";
 import { OpenLibraryError } from "../errors/OpenLibraryError.js"
 
@@ -75,7 +75,7 @@ export const editBookNotes = async (req, res, next) => {
       const updateOLID = await refreshMetadata(bookId) ;
     res.redirect("/");
   } catch (error) {
-    res.redirect("/")
+    if (error instanceof OpenLibraryError){ res.redirect("/") }
     console.error(`Could not edit the book notes. Error:`, error);
     if (!(error instanceof OpenLibraryError)){ next(error); }
   }
