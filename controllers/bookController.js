@@ -40,7 +40,10 @@ export const addBookNotes = async (req, res, next) => {
 
     res.redirect("/");
   } catch (error) {
-    res.redirect("/")
+    //I should only reload if its an open library server error;
+    //i'll deal with other types of errors in the service layer
+    
+    if(error instanceof OpenLibraryError){ res.redirect("/") }
     console.error("Unable to add the book to the db", error);
     if (!(error instanceof OpenLibraryError)){ next(error); }
 
