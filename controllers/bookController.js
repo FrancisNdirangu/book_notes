@@ -76,11 +76,6 @@ export const editBookNotes = async (req, res, next) => {
      }
     res.redirect("/");
   } catch (error) {
-    if ( ( oldTitle != editedTitle ) && (error instanceof OpenLibraryError) ) {
-      const clearMetadata = await removeMetadata(bookId);
-      res.redirect("/")
-    }
-
 
     if (error instanceof OpenLibraryError){ 
       res.redirect("/") 
